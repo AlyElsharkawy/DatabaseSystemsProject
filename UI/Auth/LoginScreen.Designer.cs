@@ -33,7 +33,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.registerBTN = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -80,27 +80,28 @@
 			this.button1.Text = "Login";
 			this.button1.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// registerBTN
 			// 
-			this.button2.Location = new System.Drawing.Point(267, 315);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 5;
-			this.button2.Text = "Register";
-			this.button2.UseVisualStyleBackColor = true;
+			this.registerBTN.Location = new System.Drawing.Point(267, 315);
+			this.registerBTN.Name = "registerBTN";
+			this.registerBTN.Size = new System.Drawing.Size(75, 23);
+			this.registerBTN.TabIndex = 5;
+			this.registerBTN.Text = "Register";
+			this.registerBTN.UseVisualStyleBackColor = true;
+			this.registerBTN.Click += new System.EventHandler(this.registerBTN_Click);
 			// 
-			// Form1
+			// LoginScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(410, 450);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.registerBTN);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.textBox1);
-			this.Name = "Form1";
+			this.Name = "LoginScreen";
 			this.Text = "Login";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -114,7 +115,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button registerBTN;
 	}
 }
 

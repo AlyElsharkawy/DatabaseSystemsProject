@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.UI.Auth;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace DatabaseSystemsProject
 		public LoginScreen()
 		{
 			InitializeComponent();
+		}
+
+		private void registerBTN_Click(object sender, EventArgs e)
+		{
+			new RegisterScreen().ShowDialog();
 		}
 	}
 }
