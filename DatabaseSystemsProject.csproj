@@ -60,6 +60,12 @@
     <Compile Include="UI\Auth\RegisterScreen.Designer.cs">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Student\HomeScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Student\HomeScreen.Designer.cs">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\Auth\LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,9 +77,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\Auth\RegisterScreen.resx">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Student\HomeScreen.resx">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -91,7 +101,9 @@
   <ItemGroup>
     <Folder Include="UI\Admin\" />
     <Folder Include="UI\Instructor\" />
-    <Folder Include="UI\Student\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\personPlaceholder.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
