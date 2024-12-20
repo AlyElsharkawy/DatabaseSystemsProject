@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.UI.Student.Payment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new LoginScreen());
+			Application.Run(new AddCard());
 		}
 	}
 }
