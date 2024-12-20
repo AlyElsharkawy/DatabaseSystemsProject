@@ -1,0 +1,9 @@
+D:\PROJECTS\DatabaseSystemsProject\bin\Debug\DatabaseSystemsProject.exe.config
+D:\PROJECTS\DatabaseSystemsProject\bin\Debug\DatabaseSystemsProject.exe
+D:\PROJECTS\DatabaseSystemsProject\bin\Debug\DatabaseSystemsProject.pdb
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.csproj.AssemblyReference.cache
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.Properties.Resources.resources
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.csproj.GenerateResource.cache
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.csproj.CoreCompileInputs.cache
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.exe
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.pdb
