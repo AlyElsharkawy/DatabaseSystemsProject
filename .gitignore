@@ -1,1 +1,30 @@
 /widgets.qss
+# Build Folders
+bin/
+obj/
+
+# User-Specific Files
+*.user
+*.rsuser
+*.suo
+*.vcxproj.user
+
+# Visual Studio Files
+.vs/
+
+# Package Management
+packages/
+*.nupkg
+*.snupkg
+
+# Log Files
+*.log
+
+# Temporary Files
+*.tmp
+*.ide
+
+# Other
+*.cache
+*.pdb
+*.lock

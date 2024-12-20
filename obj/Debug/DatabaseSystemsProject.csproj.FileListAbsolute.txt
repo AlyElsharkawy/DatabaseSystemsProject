@@ -7,3 +7,4 @@ D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.csproj.Gener
 D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.csproj.CoreCompileInputs.cache
 D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.exe
 D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.pdb
+D:\PROJECTS\DatabaseSystemsProject\obj\Debug\DatabaseSystemsProject.Form1.resources
