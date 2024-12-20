@@ -60,6 +60,18 @@
     <Compile Include="UI\Auth\RegisterScreen.Designer.cs">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Student\Courses\CourseEnroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Student\Courses\CourseEnroll.Designer.cs">
+      <DependentUpon>CourseEnroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Student\Courses\CoursePay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Student\Courses\CoursePay.Designer.cs">
+      <DependentUpon>CoursePay.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Student\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +93,12 @@
     </Compile>
     <EmbeddedResource Include="UI\Auth\RegisterScreen.resx">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Student\Courses\CourseEnroll.resx">
+      <DependentUpon>CourseEnroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Student\Courses\CoursePay.resx">
+      <DependentUpon>CoursePay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Student\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
