@@ -89,6 +89,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="UI\Admin\" />
     <Folder Include="UI\Instructor\" />
     <Folder Include="UI\Student\" />
   </ItemGroup>
