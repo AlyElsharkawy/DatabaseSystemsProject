@@ -16,5 +16,25 @@ namespace DatabaseSystemsProject.UI.Auth
 		{
 			InitializeComponent();
 		}
+
+		private void selectPfpBTN_Click(object sender, EventArgs e)
+		{
+			String path = getPfpPath();
+			if (!String.IsNullOrEmpty(path))
+			{
+				pfpPathLBL.Text = path;
+			}
+		}
+
+
+		private String getPfpPath()
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+			if (openFileDialog.ShowDialog() == DialogResult.OK) {
+				return openFileDialog.FileName;
+			}
+			return "";
+		}
 	}
 }
