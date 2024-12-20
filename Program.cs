@@ -1,4 +1,5 @@
-﻿using DatabaseSystemsProject.UI.Student.Payment;
+﻿using DatabaseSystemsProject.UI.Student.Courses;
+using DatabaseSystemsProject.UI.Student.Payment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new AllCards());
+			Application.Run(new ModulesView());
 		}
 	}
 }

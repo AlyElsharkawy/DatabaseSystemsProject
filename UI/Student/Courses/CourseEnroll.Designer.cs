@@ -34,6 +34,8 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
+			this.reviewsFLP = new System.Windows.Forms.FlowLayoutPanel();
+			this.label4 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -51,7 +53,7 @@
 			// 
 			this.pictureBox1.Location = new System.Drawing.Point(19, 49);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(513, 364);
+			this.pictureBox1.Size = new System.Drawing.Size(513, 219);
 			this.pictureBox1.TabIndex = 1;
 			this.pictureBox1.TabStop = false;
 			// 
@@ -86,11 +88,30 @@
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Price: 30000$";
 			// 
+			// reviewsFLP
+			// 
+			this.reviewsFLP.Location = new System.Drawing.Point(19, 307);
+			this.reviewsFLP.Name = "reviewsFLP";
+			this.reviewsFLP.Size = new System.Drawing.Size(513, 131);
+			this.reviewsFLP.TabIndex = 5;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
+			this.label4.Location = new System.Drawing.Point(14, 271);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(102, 26);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "Reviews";
+			// 
 			// CourseEnroll
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.reviewsFLP);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label2);
@@ -111,5 +132,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.FlowLayoutPanel reviewsFLP;
+		private System.Windows.Forms.Label label4;
 	}
 }
