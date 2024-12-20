@@ -18,7 +18,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new ModulesView());
+			Application.Run(new ReviewWrite());
 		}
 	}
 }
