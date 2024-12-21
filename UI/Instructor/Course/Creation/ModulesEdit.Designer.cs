@@ -63,7 +63,7 @@
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
 			this.button1.Location = new System.Drawing.Point(192, 12);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(76, 58);
+			this.button1.Size = new System.Drawing.Size(169, 58);
 			this.button1.TabIndex = 3;
 			this.button1.Text = "Add Module";
 			this.button1.UseVisualStyleBackColor = true;
@@ -131,9 +131,9 @@
 			// button9
 			// 
 			this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-			this.button9.Location = new System.Drawing.Point(274, 12);
+			this.button9.Location = new System.Drawing.Point(367, 12);
 			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(87, 58);
+			this.button9.Size = new System.Drawing.Size(254, 58);
 			this.button9.TabIndex = 10;
 			this.button9.Text = "Remove Module";
 			this.button9.UseVisualStyleBackColor = true;
