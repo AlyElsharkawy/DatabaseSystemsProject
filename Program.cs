@@ -20,7 +20,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new StudentsList());
+			Application.Run(new StudentsWork());
 		}
 	}
 }

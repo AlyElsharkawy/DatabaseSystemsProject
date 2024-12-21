@@ -78,6 +78,12 @@
     <Compile Include="UI\Instructor\ManageStudent\StudentsList.Designer.cs">
       <DependentUpon>StudentsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsWork.Designer.cs">
+      <DependentUpon>StudentsWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Student\Courses\Certificate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsWork.resx">
+      <DependentUpon>StudentsWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Student\Courses\CourseEnroll.resx">
       <DependentUpon>CourseEnroll.cs</DependentUpon>
