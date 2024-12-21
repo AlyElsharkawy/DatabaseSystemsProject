@@ -229,6 +229,9 @@
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddSAQ.resx">
       <DependentUpon>AddSAQ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddVideo.resx">
+      <DependentUpon>AddVideo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
