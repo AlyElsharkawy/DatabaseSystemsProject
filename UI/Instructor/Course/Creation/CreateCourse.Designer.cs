@@ -60,7 +60,7 @@
 			// textBox2
 			// 
 			this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.textBox2.Location = new System.Drawing.Point(181, 98);
+			this.textBox2.Location = new System.Drawing.Point(181, 96);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(150, 29);
 			this.textBox2.TabIndex = 2;
@@ -90,7 +90,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.label2.Location = new System.Drawing.Point(48, 101);
+			this.label2.Location = new System.Drawing.Point(48, 99);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(119, 24);
 			this.label2.TabIndex = 5;
