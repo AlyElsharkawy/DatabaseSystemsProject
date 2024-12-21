@@ -214,6 +214,9 @@
     <EmbeddedResource Include="UI\Instructor\Course\Creation\CreateCourse.resx">
       <DependentUpon>CreateCourse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\CreateModule.resx">
+      <DependentUpon>CreateModule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\ModulesEdit.resx">
       <DependentUpon>ModulesEdit.cs</DependentUpon>
     </EmbeddedResource>
