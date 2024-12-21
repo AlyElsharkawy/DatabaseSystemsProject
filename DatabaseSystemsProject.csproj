@@ -72,11 +72,53 @@
     <Compile Include="UI\Instructor\Course\Creation\CreateCourse.Designer.cs">
       <DependentUpon>CreateCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\CreateModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\CreateModule.Designer.cs">
+      <DependentUpon>CreateModule.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Instructor\Course\Creation\ModulesEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Instructor\Course\Creation\ModulesEdit.Designer.cs">
       <DependentUpon>ModulesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddAssign.Designer.cs">
+      <DependentUpon>AddAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddMCQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddMCQ.Designer.cs">
+      <DependentUpon>AddMCQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddReading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddReading.Designer.cs">
+      <DependentUpon>AddReading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddSAQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddSAQ.Designer.cs">
+      <DependentUpon>AddSAQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddTFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddTFQ.Designer.cs">
+      <DependentUpon>AddTFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\Subsections\AddVideo.Designer.cs">
+      <DependentUpon>AddVideo.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Instructor\HomeScreen.cs">
       <SubType>Form</SubType>

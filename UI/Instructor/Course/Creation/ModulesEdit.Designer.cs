@@ -105,7 +105,7 @@
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(98, 58);
 			this.button6.TabIndex = 7;
-			this.button6.Text = "Add MCQ Qustion";
+			this.button6.Text = "Add MCQ";
 			this.button6.UseVisualStyleBackColor = true;
 			// 
 			// button7
