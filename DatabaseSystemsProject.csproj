@@ -72,6 +72,12 @@
     <Compile Include="UI\Instructor\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsList.Designer.cs">
+      <DependentUpon>StudentsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Student\Courses\Certificate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsList.resx">
+      <DependentUpon>StudentsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Student\Courses\CourseEnroll.resx">
       <DependentUpon>CourseEnroll.cs</DependentUpon>
