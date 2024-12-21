@@ -60,6 +60,12 @@
     <Compile Include="UI\Auth\RegisterScreen.Designer.cs">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Student\Courses\Certificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Student\Courses\Certificate.Designer.cs">
+      <DependentUpon>Certificate.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Student\Courses\CourseEnroll.cs">
       <SubType>Form</SubType>
     </Compile>
