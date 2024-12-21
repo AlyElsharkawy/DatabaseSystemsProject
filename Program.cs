@@ -1,4 +1,5 @@
-﻿using DatabaseSystemsProject.UI.Student.Courses;
+﻿using DatabaseSystemsProject.UI.Instructor;
+using DatabaseSystemsProject.UI.Student.Courses;
 using DatabaseSystemsProject.UI.Student.Payment;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new ReviewWrite());
+			Application.Run(new HomeScreen());
 		}
 	}
 }
