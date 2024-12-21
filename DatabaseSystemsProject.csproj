@@ -60,6 +60,12 @@
     <Compile Include="UI\Auth\RegisterScreen.Designer.cs">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Instructor\Course\CourseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\CourseView.Designer.cs">
+      <DependentUpon>CourseView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Instructor\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <EmbeddedResource Include="UI\Auth\RegisterScreen.resx">
       <DependentUpon>RegisterScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\CourseView.resx">
+      <DependentUpon>CourseView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\Admin\" />
-    <Folder Include="UI\Instructor\Course\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\personPlaceholder.jpg" />
