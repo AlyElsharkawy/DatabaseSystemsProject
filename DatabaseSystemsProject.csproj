@@ -72,6 +72,12 @@
     <Compile Include="UI\Instructor\Course\Creation\CreateCourse.Designer.cs">
       <DependentUpon>CreateCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\ModulesEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\Course\Creation\ModulesEdit.Designer.cs">
+      <DependentUpon>ModulesEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Instructor\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\CreateCourse.resx">
       <DependentUpon>CreateCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\ModulesEdit.resx">
+      <DependentUpon>ModulesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
