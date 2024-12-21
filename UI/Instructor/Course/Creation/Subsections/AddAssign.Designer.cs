@@ -40,7 +40,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.label1.Location = new System.Drawing.Point(12, 9);
+			this.label1.Location = new System.Drawing.Point(12, 8);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(83, 26);
 			this.label1.TabIndex = 2;
@@ -49,9 +49,9 @@
 			// richTextBox1
 			// 
 			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.richTextBox1.Location = new System.Drawing.Point(101, 9);
+			this.richTextBox1.Location = new System.Drawing.Point(137, 9);
 			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(573, 361);
+			this.richTextBox1.Size = new System.Drawing.Size(537, 361);
 			this.richTextBox1.TabIndex = 3;
 			this.richTextBox1.Text = "";
 			// 
