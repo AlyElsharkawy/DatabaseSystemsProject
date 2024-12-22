@@ -1,4 +1,5 @@
 ﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.UI.Student.Courses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,7 +70,7 @@ namespace DatabaseSystemsProject.UI.Student
 				};
 
 
-				courseBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				courseBTN.Click += (sender, e) => { new CourseEnroll(item).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

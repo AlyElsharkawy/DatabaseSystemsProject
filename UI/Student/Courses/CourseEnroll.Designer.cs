@@ -29,64 +29,66 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CourseEnroll));
-			this.label1 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
+			this.nameLBL = new System.Windows.Forms.Label();
+			this.thmubPB = new System.Windows.Forms.PictureBox();
+			this.descLBL = new System.Windows.Forms.Label();
+			this.enrollBTN = new System.Windows.Forms.Button();
+			this.priceLBL = new System.Windows.Forms.Label();
 			this.reviewsFLP = new System.Windows.Forms.FlowLayoutPanel();
 			this.label4 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.thmubPB)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// label1
+			// nameLBL
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(12, 9);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(226, 37);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Course Name";
+			this.nameLBL.AutoSize = true;
+			this.nameLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nameLBL.Location = new System.Drawing.Point(12, 9);
+			this.nameLBL.Name = "nameLBL";
+			this.nameLBL.Size = new System.Drawing.Size(226, 37);
+			this.nameLBL.TabIndex = 0;
+			this.nameLBL.Text = "Course Name";
 			// 
-			// pictureBox1
+			// thmubPB
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(19, 49);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(513, 219);
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
+			this.thmubPB.Location = new System.Drawing.Point(19, 49);
+			this.thmubPB.Name = "thmubPB";
+			this.thmubPB.Size = new System.Drawing.Size(513, 219);
+			this.thmubPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.thmubPB.TabIndex = 1;
+			this.thmubPB.TabStop = false;
 			// 
-			// label2
+			// descLBL
 			// 
-			this.label2.AllowDrop = true;
-			this.label2.AutoEllipsis = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.label2.Location = new System.Drawing.Point(552, 49);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(226, 283);
-			this.label2.TabIndex = 2;
-			this.label2.Text = resources.GetString("label2.Text");
+			this.descLBL.AllowDrop = true;
+			this.descLBL.AutoEllipsis = true;
+			this.descLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.descLBL.Location = new System.Drawing.Point(552, 49);
+			this.descLBL.Name = "descLBL";
+			this.descLBL.Size = new System.Drawing.Size(226, 283);
+			this.descLBL.TabIndex = 2;
+			this.descLBL.Text = resources.GetString("descLBL.Text");
 			// 
-			// button1
+			// enrollBTN
 			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.button1.Location = new System.Drawing.Point(672, 345);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(96, 68);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "Enroll";
-			this.button1.UseVisualStyleBackColor = true;
+			this.enrollBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.enrollBTN.Location = new System.Drawing.Point(672, 345);
+			this.enrollBTN.Name = "enrollBTN";
+			this.enrollBTN.Size = new System.Drawing.Size(96, 68);
+			this.enrollBTN.TabIndex = 3;
+			this.enrollBTN.Text = "Enroll";
+			this.enrollBTN.UseVisualStyleBackColor = true;
+			this.enrollBTN.Click += new System.EventHandler(this.enrollBTN_Click);
 			// 
-			// label3
+			// priceLBL
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-			this.label3.Location = new System.Drawing.Point(552, 371);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(119, 20);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "Price: 30000$";
+			this.priceLBL.AutoSize = true;
+			this.priceLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+			this.priceLBL.Location = new System.Drawing.Point(552, 371);
+			this.priceLBL.Name = "priceLBL";
+			this.priceLBL.Size = new System.Drawing.Size(119, 20);
+			this.priceLBL.TabIndex = 4;
+			this.priceLBL.Text = "Price: 30000$";
 			// 
 			// reviewsFLP
 			// 
@@ -112,14 +114,14 @@
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.reviewsFLP);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.pictureBox1);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.priceLBL);
+			this.Controls.Add(this.enrollBTN);
+			this.Controls.Add(this.descLBL);
+			this.Controls.Add(this.thmubPB);
+			this.Controls.Add(this.nameLBL);
 			this.Name = "CourseEnroll";
 			this.Text = "CourseEnroll";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.thmubPB)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -127,11 +129,11 @@
 
 		#endregion
 
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label nameLBL;
+		private System.Windows.Forms.PictureBox thmubPB;
+		private System.Windows.Forms.Label descLBL;
+		private System.Windows.Forms.Button enrollBTN;
+		private System.Windows.Forms.Label priceLBL;
 		private System.Windows.Forms.FlowLayoutPanel reviewsFLP;
 		private System.Windows.Forms.Label label4;
 	}
