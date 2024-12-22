@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DatabaseSystemsProject.UI.Student.MyCourses
+namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 {
-	public partial class AllCourses : Form
+	public partial class MyCourses : Form
 	{
 
 		String placeHolderPath;
-		public AllCourses()
+		public MyCourses()
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
@@ -24,14 +25,7 @@ namespace DatabaseSystemsProject.UI.Student.MyCourses
 
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Item 1", Description = "Description 1", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 3", Description = "Description 3", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-			};
+			var items = CourseQueries.getStudentCourses(23);
 
 			foreach (var item in items)
 			{
@@ -45,7 +39,7 @@ namespace DatabaseSystemsProject.UI.Student.MyCourses
 
 				PictureBox courseThumb = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,

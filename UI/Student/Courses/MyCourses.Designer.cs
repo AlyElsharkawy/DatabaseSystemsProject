@@ -1,6 +1,6 @@
-﻿namespace DatabaseSystemsProject.UI.Student.MyCourses
+﻿namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 {
-	partial class AllCourses
+	partial class MyCourses
 	{
 		/// <summary>
 		/// Required designer variable.

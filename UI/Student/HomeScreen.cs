@@ -1,5 +1,6 @@
 ﻿using DatabaseSystemsProject.DB;
 using DatabaseSystemsProject.UI.Student.Courses;
+using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -85,6 +86,10 @@ namespace DatabaseSystemsProject.UI.Student
 
 			}
 		}
-			
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			new MyCourses().Show();
+		}
 	}
 }
