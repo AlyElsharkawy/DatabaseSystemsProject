@@ -12,7 +12,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 {
 	public partial class ModulesEdit : Form
 	{
-		public ModulesEdit()
+		public ModulesEdit(long courseID)
 		{
 			InitializeComponent();
 		}

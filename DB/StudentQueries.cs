@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DatabaseSystemsProject.Utility;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,5 +85,46 @@ namespace DatabaseSystemsProject.DB
 			}
 		}
 
+
+		public static long loginStudent(String email, String password)
+		{
+			string query = "SELECT sci.ID, ssi.PasswordSalt, ssi.PasswordHash " +
+				   "FROM StudentContactInformation sci " +
+				   "JOIN StudentSecurityInformation ssi ON sci.ID = ssi.ID " +
+				   "WHERE sci.Email = @Email";
+
+			byte[] storedSalt = null;
+			byte[] storedHash = null;
+			long studentID = 0;
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString)) {
+
+				connection.Open();
+				using (var command = new MySqlCommand(query, connection)) {
+
+					command.Parameters.AddWithValue("@Email", email);
+
+					using (var reader = command.ExecuteReader()) {
+						if (reader.Read()) {
+
+							studentID = reader.GetInt64("ID");
+							storedSalt = PasswordEncryption.HexStringToByteArray(reader.GetString("PasswordSalt"));
+							storedHash = PasswordEncryption.HexStringToByteArray(reader.GetString("PasswordHash"));
+						}
+					}
+				}
+			}
+
+			byte[] enteredHash = PasswordEncryption.HashPassword(password, storedSalt);
+
+			if (PasswordEncryption.CompareByteArrays(enteredHash, storedHash))
+			{ 
+				return studentID;
+			}
+		
+
+			return -1;
+
+		}
 	}
 }

@@ -28,10 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.numberTB = new System.Windows.Forms.TextBox();
+			this.typeCB = new System.Windows.Forms.ComboBox();
+			this.cvvTB = new System.Windows.Forms.TextBox();
+			this.nameTB = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -40,47 +40,48 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.textBox5 = new System.Windows.Forms.TextBox();
+			this.monthTB = new System.Windows.Forms.TextBox();
+			this.yearTB = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// numberTB
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox1.Location = new System.Drawing.Point(143, 55);
-			this.textBox1.MaxLength = 16;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(268, 32);
-			this.textBox1.TabIndex = 0;
+			this.numberTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.numberTB.Location = new System.Drawing.Point(143, 55);
+			this.numberTB.MaxLength = 16;
+			this.numberTB.Name = "numberTB";
+			this.numberTB.Size = new System.Drawing.Size(268, 32);
+			this.numberTB.TabIndex = 0;
 			// 
-			// comboBox1
+			// typeCB
 			// 
-			this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.typeCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.typeCB.FormattingEnabled = true;
+			this.typeCB.Items.AddRange(new object[] {
             "Visa",
-            "Mastercard"});
-			this.comboBox1.Location = new System.Drawing.Point(143, 107);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 33);
-			this.comboBox1.TabIndex = 1;
+            "Mastercard",
+            "American Express"});
+			this.typeCB.Location = new System.Drawing.Point(143, 107);
+			this.typeCB.Name = "typeCB";
+			this.typeCB.Size = new System.Drawing.Size(121, 33);
+			this.typeCB.TabIndex = 1;
 			// 
-			// textBox2
+			// cvvTB
 			// 
-			this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox2.Location = new System.Drawing.Point(143, 200);
-			this.textBox2.MaxLength = 3;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(49, 32);
-			this.textBox2.TabIndex = 3;
+			this.cvvTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.cvvTB.Location = new System.Drawing.Point(143, 200);
+			this.cvvTB.MaxLength = 3;
+			this.cvvTB.Name = "cvvTB";
+			this.cvvTB.Size = new System.Drawing.Size(49, 32);
+			this.cvvTB.TabIndex = 3;
 			// 
-			// textBox3
+			// nameTB
 			// 
-			this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox3.Location = new System.Drawing.Point(143, 242);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(268, 32);
-			this.textBox3.TabIndex = 4;
+			this.nameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.nameTB.Location = new System.Drawing.Point(143, 242);
+			this.nameTB.Name = "nameTB";
+			this.nameTB.Size = new System.Drawing.Size(268, 32);
+			this.nameTB.TabIndex = 4;
 			// 
 			// label1
 			// 
@@ -159,32 +160,33 @@
 			this.button1.TabIndex = 16;
 			this.button1.Text = "Add";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// textBox4
+			// monthTB
 			// 
-			this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox4.Location = new System.Drawing.Point(260, 158);
-			this.textBox4.MaxLength = 2;
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(49, 32);
-			this.textBox4.TabIndex = 17;
+			this.monthTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.monthTB.Location = new System.Drawing.Point(260, 158);
+			this.monthTB.MaxLength = 2;
+			this.monthTB.Name = "monthTB";
+			this.monthTB.Size = new System.Drawing.Size(49, 32);
+			this.monthTB.TabIndex = 17;
 			// 
-			// textBox5
+			// yearTB
 			// 
-			this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox5.Location = new System.Drawing.Point(362, 158);
-			this.textBox5.MaxLength = 2;
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(49, 32);
-			this.textBox5.TabIndex = 18;
+			this.yearTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.yearTB.Location = new System.Drawing.Point(362, 158);
+			this.yearTB.MaxLength = 2;
+			this.yearTB.Name = "yearTB";
+			this.yearTB.Size = new System.Drawing.Size(49, 32);
+			this.yearTB.TabIndex = 18;
 			// 
 			// AddCard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(454, 381);
-			this.Controls.Add(this.textBox5);
-			this.Controls.Add(this.textBox4);
+			this.Controls.Add(this.yearTB);
+			this.Controls.Add(this.monthTB);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
@@ -193,10 +195,10 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox3);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.comboBox1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.nameTB);
+			this.Controls.Add(this.cvvTB);
+			this.Controls.Add(this.typeCB);
+			this.Controls.Add(this.numberTB);
 			this.Name = "AddCard";
 			this.Text = "AddCard";
 			this.ResumeLayout(false);
@@ -206,10 +208,10 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox numberTB;
+		private System.Windows.Forms.ComboBox typeCB;
+		private System.Windows.Forms.TextBox cvvTB;
+		private System.Windows.Forms.TextBox nameTB;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
@@ -218,7 +220,7 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox4;
-		private System.Windows.Forms.TextBox textBox5;
+		private System.Windows.Forms.TextBox monthTB;
+		private System.Windows.Forms.TextBox yearTB;
 	}
 }

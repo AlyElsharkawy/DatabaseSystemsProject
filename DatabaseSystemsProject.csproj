@@ -98,11 +98,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\AdminQueries.cs" />
-    <Compile Include="DB\dbSecret.cs" />
+	  <Compile Include="DB\CardQueries.cs" />
+	  <Compile Include="DB\CourseQueries.cs" />
+	  <Compile Include="DB\AdminQueries.cs" />
+	  <Compile Include="DB\dbSecret.cs" />
     <Compile Include="DB\InstructorQueries.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
+    <Compile Include="Models\BankCard.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="UI\Admin\AddInstructor.cs">
       <SubType>Form</SubType>
     </Compile>

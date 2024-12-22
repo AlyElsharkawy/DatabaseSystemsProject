@@ -28,28 +28,28 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.emailTB = new System.Windows.Forms.TextBox();
+			this.passTB = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.loginBTN = new System.Windows.Forms.Button();
 			this.registerBTN = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// emailTB
 			// 
-			this.textBox1.Location = new System.Drawing.Point(109, 161);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(233, 20);
-			this.textBox1.TabIndex = 0;
+			this.emailTB.Location = new System.Drawing.Point(109, 161);
+			this.emailTB.Name = "emailTB";
+			this.emailTB.Size = new System.Drawing.Size(233, 20);
+			this.emailTB.TabIndex = 0;
 			// 
-			// textBox2
+			// passTB
 			// 
-			this.textBox2.Location = new System.Drawing.Point(109, 233);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.PasswordChar = '*';
-			this.textBox2.Size = new System.Drawing.Size(233, 20);
-			this.textBox2.TabIndex = 1;
+			this.passTB.Location = new System.Drawing.Point(109, 233);
+			this.passTB.Name = "passTB";
+			this.passTB.PasswordChar = '*';
+			this.passTB.Size = new System.Drawing.Size(233, 20);
+			this.passTB.TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -100,8 +100,8 @@
 			this.Controls.Add(this.loginBTN);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.passTB);
+			this.Controls.Add(this.emailTB);
 			this.Name = "LoginScreen";
 			this.Text = "Login";
 			this.ResumeLayout(false);
@@ -111,8 +111,8 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox emailTB;
+		private System.Windows.Forms.TextBox passTB;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button loginBTN;

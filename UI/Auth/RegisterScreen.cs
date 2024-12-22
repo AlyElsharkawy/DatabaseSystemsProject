@@ -65,5 +65,10 @@ namespace DatabaseSystemsProject.UI.Auth
 			Close();
 
 		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

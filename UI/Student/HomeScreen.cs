@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.UI.Student.Courses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,20 +20,13 @@ namespace DatabaseSystemsProject.UI.Student
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
-			loadDummyData();
+			loadCourses();
 
 		}
 
-		private void loadDummyData()
+		private void loadCourses()
 		{
-			var items = new[]
-			{
-				new { Name = "Item 1", Description = "Description 1", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 3", Description = "Description 3", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-			};
+			var items = CourseQueries.getAllCourses();
 
 			foreach (var item in items)
 			{
@@ -44,7 +39,7 @@ namespace DatabaseSystemsProject.UI.Student
 
 				PictureBox courseThumb = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,
@@ -75,7 +70,7 @@ namespace DatabaseSystemsProject.UI.Student
 				};
 
 
-				courseBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				courseBTN.Click += (sender, e) => { new CourseEnroll(item).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);
