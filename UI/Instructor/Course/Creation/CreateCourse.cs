@@ -54,7 +54,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 			String desc = descTB.Text;
 			try
 			{
-				double price = double.Parse(priceTB.Text);
+				decimal price = decimal.Parse(priceTB.Text);
 				currentID = CourseQueries.CreateCourse(name, price, path, desc);
 			}
 			catch
