@@ -58,6 +58,12 @@
     <Compile Include="UI\Admin\AddOrganization.Designer.cs">
       <DependentUpon>AddOrganization.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Admin\AllStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\AllStudents.Designer.cs">
+      <DependentUpon>AllStudents.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin\Courses\AllCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\AddOrganization.resx">
       <DependentUpon>AddOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\AllStudents.resx">
+      <DependentUpon>AllStudents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\Courses\AllCourses.resx">
       <DependentUpon>AllCourses.cs</DependentUpon>
