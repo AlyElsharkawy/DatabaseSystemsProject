@@ -1,4 +1,5 @@
-﻿using DatabaseSystemsProject.Utility;
+﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +60,7 @@ namespace DatabaseSystemsProject.UI.Auth
 			String saltHex = PasswordEncryption.ByteArrayToHexString(salt);
 			String hashHex = PasswordEncryption.ByteArrayToHexString(hash);
 
-			Database.registerStudent(name, email, birthDate,path, phoneNumber, hashHex, saltHex);
+			StudentQueries.registerStudent(name, email, birthDate,path, phoneNumber, hashHex, saltHex);
 
 			Close();
 
