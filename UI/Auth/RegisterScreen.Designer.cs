@@ -187,6 +187,7 @@
 			// pnoTB
 			// 
 			this.pnoTB.Location = new System.Drawing.Point(205, 254);
+			this.pnoTB.MaxLength = 11;
 			this.pnoTB.Name = "pnoTB";
 			this.pnoTB.Size = new System.Drawing.Size(200, 20);
 			this.pnoTB.TabIndex = 18;
