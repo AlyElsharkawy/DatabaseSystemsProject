@@ -61,7 +61,7 @@ namespace DatabaseSystemsProject.DB
 			using (var conn = new MySqlConnection(dbSecret.connectionString)) { 
 				conn.Open();
 				using (var cmm = new MySqlCommand(query, conn)) {
-					cmm.Parameters.AddWithValue("@StudentID", 23);
+					cmm.Parameters.AddWithValue("@StudentID", 1);
 					using (var reader = cmm.ExecuteReader()) {
 						while (reader.Read()) {
 							var course = new Course
@@ -125,6 +125,41 @@ namespace DatabaseSystemsProject.DB
 				using (var cmm = new MySqlCommand(query, conn))
 				{
 					cmm.Parameters.AddWithValue("@StudentID", studentID);
+					using (var reader = cmm.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							var course = new Course
+							{
+								Id = reader.GetInt64("ID"),
+								Name = reader.GetString("Name"),
+								Description = reader.GetString("Description"),
+								thumbPath = reader.GetString("ThumbnailPath"),
+							};
+
+							courses.Add(course);
+						}
+					}
+				}
+
+			}
+
+			return courses;
+		}
+
+		public static List<Course> getInstructorCourses(long instructorID) {
+
+			var courses = new List<Course>();
+			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath " +
+							"FROM StudentEnrollment se " +
+							"JOIN CourseInformation c ON se.COURSEID = c.ID " +
+							"WHERE se.StudentID = @StudentID";
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@StudentID", instructorID);
 					using (var reader = cmm.ExecuteReader())
 					{
 						while (reader.Read())
