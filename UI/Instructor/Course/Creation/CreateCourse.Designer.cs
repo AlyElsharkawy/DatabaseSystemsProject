@@ -28,53 +28,53 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.nameTB = new System.Windows.Forms.TextBox();
+			this.descTB = new System.Windows.Forms.RichTextBox();
+			this.priceTB = new System.Windows.Forms.TextBox();
+			this.selectBTN = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.pathLBL = new System.Windows.Forms.Label();
+			this.modulesBTN = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// nameTB
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.textBox1.Location = new System.Drawing.Point(181, 48);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(436, 29);
-			this.textBox1.TabIndex = 0;
+			this.nameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+			this.nameTB.Location = new System.Drawing.Point(181, 48);
+			this.nameTB.Name = "nameTB";
+			this.nameTB.Size = new System.Drawing.Size(436, 29);
+			this.nameTB.TabIndex = 0;
 			// 
-			// richTextBox1
+			// descTB
 			// 
-			this.richTextBox1.Location = new System.Drawing.Point(181, 133);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(436, 168);
-			this.richTextBox1.TabIndex = 1;
-			this.richTextBox1.Text = "";
+			this.descTB.Location = new System.Drawing.Point(181, 133);
+			this.descTB.Name = "descTB";
+			this.descTB.Size = new System.Drawing.Size(436, 168);
+			this.descTB.TabIndex = 1;
+			this.descTB.Text = "";
 			// 
-			// textBox2
+			// priceTB
 			// 
-			this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.textBox2.Location = new System.Drawing.Point(181, 96);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(150, 29);
-			this.textBox2.TabIndex = 2;
-			this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+			this.priceTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+			this.priceTB.Location = new System.Drawing.Point(181, 96);
+			this.priceTB.Name = "priceTB";
+			this.priceTB.Size = new System.Drawing.Size(150, 29);
+			this.priceTB.TabIndex = 2;
+			this.priceTB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
 			// 
-			// button1
+			// selectBTN
 			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.button1.Location = new System.Drawing.Point(181, 327);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(150, 35);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "Select Photo";
-			this.button1.UseVisualStyleBackColor = true;
+			this.selectBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+			this.selectBTN.Location = new System.Drawing.Point(181, 327);
+			this.selectBTN.Name = "selectBTN";
+			this.selectBTN.Size = new System.Drawing.Size(150, 35);
+			this.selectBTN.TabIndex = 3;
+			this.selectBTN.Text = "Select Photo";
+			this.selectBTN.UseVisualStyleBackColor = true;
+			this.selectBTN.Click += new System.EventHandler(this.selectBTN_Click);
 			// 
 			// label1
 			// 
@@ -116,52 +116,42 @@
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Course Thumbinal";
 			// 
-			// label5
+			// pathLBL
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.label5.Location = new System.Drawing.Point(352, 336);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(141, 20);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "Path/To/Photo.png";
+			this.pathLBL.AutoSize = true;
+			this.pathLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.pathLBL.Location = new System.Drawing.Point(352, 336);
+			this.pathLBL.Name = "pathLBL";
+			this.pathLBL.Size = new System.Drawing.Size(141, 20);
+			this.pathLBL.TabIndex = 8;
+			this.pathLBL.Text = "Path/To/Photo.png";
 			// 
-			// button2
+			// modulesBTN
 			// 
-			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.button2.Location = new System.Drawing.Point(181, 403);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(150, 35);
-			this.button2.TabIndex = 9;
-			this.button2.Text = "Add Modules";
-			this.button2.UseVisualStyleBackColor = true;
-			// 
-			// button3
-			// 
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-			this.button3.Location = new System.Drawing.Point(467, 403);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(150, 35);
-			this.button3.TabIndex = 10;
-			this.button3.Text = "Upload Course";
-			this.button3.UseVisualStyleBackColor = true;
+			this.modulesBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+			this.modulesBTN.Location = new System.Drawing.Point(149, 403);
+			this.modulesBTN.Name = "modulesBTN";
+			this.modulesBTN.Size = new System.Drawing.Size(382, 35);
+			this.modulesBTN.TabIndex = 9;
+			this.modulesBTN.Text = "Upload And Start adding Modules";
+			this.modulesBTN.UseVisualStyleBackColor = true;
+			this.modulesBTN.Click += new System.EventHandler(this.modulesBTN_Click);
 			// 
 			// CreateCourse
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(638, 450);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.label5);
+			this.Controls.Add(this.modulesBTN);
+			this.Controls.Add(this.pathLBL);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.richTextBox1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.selectBTN);
+			this.Controls.Add(this.priceTB);
+			this.Controls.Add(this.descTB);
+			this.Controls.Add(this.nameTB);
 			this.Name = "CreateCourse";
 			this.Text = "CreateCourse";
 			this.ResumeLayout(false);
@@ -171,16 +161,15 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox nameTB;
+		private System.Windows.Forms.RichTextBox descTB;
+		private System.Windows.Forms.TextBox priceTB;
+		private System.Windows.Forms.Button selectBTN;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Label pathLBL;
+		private System.Windows.Forms.Button modulesBTN;
 	}
 }
