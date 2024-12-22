@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,14 +26,7 @@ namespace DatabaseSystemsProject.UI.Admin.Courses
 
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Item 1", Description = "Description 1", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 3", Description = "Description 3", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-			};
+			var items = CourseQueries.getAllCourses();
 
 			foreach (var item in items)
 			{
@@ -46,7 +40,7 @@ namespace DatabaseSystemsProject.UI.Admin.Courses
 
 				PictureBox courseThumb = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,
@@ -77,7 +71,7 @@ namespace DatabaseSystemsProject.UI.Admin.Courses
 				};
 
 
-				enterBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				enterBTN.Click += (sender, e) => { new SpecificCourse(item).ShowDialog(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

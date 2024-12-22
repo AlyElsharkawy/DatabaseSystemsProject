@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DatabaseSystemsProject.UI.Admin.AllStudents
+namespace DatabaseSystemsProject.UI.Admin
 {
 	public partial class AllStudents : Form
 	{

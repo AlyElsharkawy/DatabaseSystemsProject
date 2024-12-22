@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DatabaseSystemsProject.UI.Admin;
+using DatabaseSystemsProject.UI.Admin.Courses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,5 +23,15 @@ namespace DatabaseSystemsProject.UI.Admin
 		{
 
 		}
-	}
+
+        private void studentList_Click(object sender, EventArgs e)
+        {
+			new AllStudents().Show();
+        }
+
+        private void coursesList_Click(object sender, EventArgs e)
+        {
+			new AllCourses().ShowDialog();
+        }
+    }
 }

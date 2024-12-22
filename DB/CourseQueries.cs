@@ -49,8 +49,39 @@ namespace DatabaseSystemsProject.DB
 			}
 		}
 
+        public static List<Course> getAllCourses()
+        {
+            var courses = new List<Course>();
+            string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath, c.Cost " +
+                "FROM CourseInformation c ";
+            using (var conn = new MySqlConnection(dbSecret.connectionString))
+            {
+                conn.Open();
+                using (var cmm = new MySqlCommand(query, conn))
+                {
+                    using (var reader = cmm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var course = new Course
+                            {
+                                Id = reader.GetInt64("ID"),
+                                Name = reader.GetString("Name"),
+                                Description = reader.GetString("Description"),
+                                thumbPath = reader.GetString("ThumbnailPath"),
+                                price = reader.GetDecimal("Cost")
+                            };
 
-		public static List<Course> getAllCourses()
+                            courses.Add(course);
+                        }
+                    }
+                }
+
+            }
+
+            return courses;
+        }
+        public static List<Course> getUnenrolledStudentCourses()
 		{
 			var courses = new List<Course>();
 			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath, c.Cost " +

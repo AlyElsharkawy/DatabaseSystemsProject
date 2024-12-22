@@ -27,7 +27,7 @@ namespace DatabaseSystemsProject.UI.Student
 
 		private void loadCourses()
 		{
-			var items = CourseQueries.getAllCourses();
+			var items = CourseQueries.getUnenrolledStudentCourses();
 
 			foreach (var item in items)
 			{
