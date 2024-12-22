@@ -2,6 +2,7 @@
 # Build Folders
 bin/
 obj/
+Utility/Database.cs
 
 # User-Specific Files
 *.user
