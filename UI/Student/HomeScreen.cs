@@ -1,5 +1,6 @@
 ﻿using DatabaseSystemsProject.DB;
 using DatabaseSystemsProject.UI.Student.Courses;
+using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,11 @@ namespace DatabaseSystemsProject.UI.Student
 				};
 
 
-				courseBTN.Click += (sender, e) => { new CourseEnroll(item).Show(); };
+				courseBTN.Click += (sender, e) => { new CourseEnroll(item).ShowDialog();
+
+					CoursesFLP.Controls.Clear();
+					loadCourses();
+				};
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);
@@ -81,6 +86,15 @@ namespace DatabaseSystemsProject.UI.Student
 
 			}
 		}
-			
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			new MyCourses().Show();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

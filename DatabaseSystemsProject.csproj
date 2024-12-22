@@ -103,6 +103,7 @@
     <Compile Include="DB\AdminQueries.cs" />
     <Compile Include="DB\dbSecret.cs" />
     <Compile Include="DB\InstructorQueries.cs" />
+    <Compile Include="DB\InvoiceQueries.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
     <Compile Include="Models\BankCard.cs" />

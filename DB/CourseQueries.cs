@@ -53,11 +53,15 @@ namespace DatabaseSystemsProject.DB
 		public static List<Course> getAllCourses()
 		{
 			var courses = new List<Course>();
-			string query = "SELECT ID, Name, Description, ThumbnailPath, Cost FROM CourseInformation";
+			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath, c.Cost " +
+				"FROM CourseInformation c " +
+				"LEFT JOIN StudentEnrollment se " +
+				"ON c.ID = se.CourseID AND se.StudentID = @StudentID " +
+				"WHERE se.CourseID IS NULL;";
 			using (var conn = new MySqlConnection(dbSecret.connectionString)) { 
 				conn.Open();
 				using (var cmm = new MySqlCommand(query, conn)) {
-
+					cmm.Parameters.AddWithValue("@StudentID", 23);
 					using (var reader = cmm.ExecuteReader()) {
 						while (reader.Read()) {
 							var course = new Course
@@ -74,6 +78,70 @@ namespace DatabaseSystemsProject.DB
 					}
 				}
 			
+			}
+
+			return courses;
+		}
+	
+		public static void enrollStudent(long studentID, long courseID)
+		{
+			String query = "INSERT INTO StudentEnrollment(StudentID, CourseID) " +
+							"VALUES (@StudentID, @CourseID)";
+
+			using(var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				try
+				{
+					using (var trans = conn.BeginTransaction()) {
+						using (var cmd = new MySqlCommand(query, conn))
+						{
+							cmd.Parameters.AddWithValue("@StudentID", studentID);
+							cmd.Parameters.AddWithValue("@CourseID", courseID);
+
+							cmd.ExecuteNonQuery();
+						}
+
+						trans.Commit();
+					}
+				}
+				catch(Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
+
+		public static List<Course> getStudentCourses(long studentID)
+		{
+			var courses = new List<Course>();
+			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath " +
+							"FROM StudentEnrollment se " +
+							"JOIN CourseInformation c ON se.COURSEID = c.ID " +
+							"WHERE se.StudentID = @StudentID";
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@StudentID", studentID);
+					using (var reader = cmm.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							var course = new Course
+							{
+								Id = reader.GetInt64("ID"),
+								Name = reader.GetString("Name"),
+								Description = reader.GetString("Description"),
+								thumbPath = reader.GetString("ThumbnailPath"),
+							};
+
+							courses.Add(course);
+						}
+					}
+				}
+
 			}
 
 			return courses;
