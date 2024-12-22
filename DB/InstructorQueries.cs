@@ -13,7 +13,7 @@ namespace DatabaseSystemsProject.DB
         static MySqlConnection connection;
 
 
-        public static void registerInstructor(String name, String email, DateTime bod, String pfpPath, String phoneNumber, String hash, String salt, String organisation)
+        public static void registerInstructor(String name, String email, DateTime bod, String pfpPath, String phoneNumber, String hash, String salt, long orgID)
         {
             String instructorInfoInsert = "INSERT INTO InstructorInformation(Name, BirthDate, ProfilePicturePath,AdminID) " +
                                         "VALUES (@Name, @BirthDate, @ProfilePicturePath,@AdminID);";
@@ -26,7 +26,11 @@ namespace DatabaseSystemsProject.DB
 
             String instructorLockoutInsert = "INSERT INTO InstructorLockoutInformation(ID) " +
                                         "VALUES (@InstructorID);";
-            using (connection = new MySqlConnection(dbSecret.connectionString))
+
+            String instructorOrganization = "INSERT INTO OrganizationInstructors(ID,InstructorID) " +
+                                             "VALUES(@OrgID,@InstructorID)";
+
+			using (connection = new MySqlConnection(dbSecret.connectionString))
             {
                 connection.Open();
                 try
@@ -71,10 +75,18 @@ namespace DatabaseSystemsProject.DB
                             fourthCommand.ExecuteNonQuery();
                         }
 
+                        if (orgID != -1)
+                        {
+                            using (var fifthCommand = new MySqlCommand(instructorOrganization, connection, transaction))
+                            {
+                                fifthCommand.Parameters.AddWithValue("@OrgID", orgID);
+                                fifthCommand.Parameters.AddWithValue("@InstructorID", instructorID);
+
+                                fifthCommand.ExecuteNonQuery();
+                            }
+                        }
                         transaction.Commit();
 
-
-                        MessageBox.Show(instructorID.ToString());
                     }
                 }
                 catch (Exception ex)

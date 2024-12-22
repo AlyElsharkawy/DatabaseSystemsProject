@@ -108,6 +108,7 @@
     <Compile Include="DB\StudentQueries.cs" />
     <Compile Include="Models\BankCard.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="UI\Admin\AddAdmin.cs">
       <SubType>Form</SubType>

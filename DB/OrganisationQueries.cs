@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Windows.Forms;
+using DatabaseSystemsProject.Models;
 
 namespace DatabaseSystemsProject.DB
 {
@@ -46,6 +47,33 @@ namespace DatabaseSystemsProject.DB
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
+        }
+
+        public static List<Organization> getAllOrgs()
+        {
+            List<Organization> orgs = new List<Organization>();
+
+            String query = "SELECT ID, NAME FROM Organizations";
+
+            using (var conn = new MySqlConnection(dbSecret.connectionString))
+            {
+                conn.Open();
+                using (var cmm = new MySqlCommand(query, conn))
+                {
+                    using (var reader = cmm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            var org = new Organization { ID = reader.GetInt32("ID"), Name = reader.GetString("NAME") };
+                            orgs.Add(org);
+                        }
+                    }
+                }
+
+            }
+
+            return orgs;
         }
     }
 }

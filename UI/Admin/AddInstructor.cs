@@ -1,4 +1,5 @@
 ﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.Models;
 using DatabaseSystemsProject.Utility;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,19 @@ namespace DatabaseSystemsProject.UI.Admin
 		public AddInstructor()
 		{
 			InitializeComponent();
+			Organization defaultOrg = new Organization
+			{
+				ID = -1,
+				Name = "None"
+			};
+            var allOrgs = OrganisationQueries.getAllOrgs();
+            allOrgs.Insert(0, defaultOrg);
+			instructorOrganisation.DataSource = allOrgs;
+            instructorOrganisation.DisplayMember = "Name";
+            instructorOrganisation.ValueMember = "ID";
 		}
+
+
 
         String path;
         private void selectPfpBTN_Click(object sender, EventArgs e)
@@ -55,7 +68,8 @@ namespace DatabaseSystemsProject.UI.Admin
             String pass = instructorPassword.Text;
             String confirmPass = instructorConfirmPassword.Text;
             String phoneNumber = instructorPhoneNumber.Text;
-            String org = instructorOrganisation.Text;
+			Organization org = (Organization)instructorOrganisation.SelectedItem;
+            long orgID = org.ID;
 
             if (!pass.Equals(confirmPass))
             {
@@ -68,7 +82,7 @@ namespace DatabaseSystemsProject.UI.Admin
             String saltHex = PasswordEncryption.ByteArrayToHexString(salt);
             String hashHex = PasswordEncryption.ByteArrayToHexString(hash);
 
-            InstructorQueries.registerInstructor(name, email, dateTime, path, phoneNumber, hashHex, saltHex ,org);
+            InstructorQueries.registerInstructor(name, email, dateTime, path, phoneNumber, hashHex, saltHex , orgID);
 
             Close();
         }
