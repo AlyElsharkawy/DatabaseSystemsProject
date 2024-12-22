@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 {
 	public partial class CoursePay : Form
 	{
-		public CoursePay()
+		public CoursePay(Course selectedCourse)
 		{
 			InitializeComponent();
+			nameLBL.Text = selectedCourse.Name;
+			priceLBL.Text = "Price: " + selectedCourse.price.ToString() + "$";
 		}
 	}
 }
