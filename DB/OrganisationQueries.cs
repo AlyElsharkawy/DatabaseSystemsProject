@@ -23,23 +23,21 @@ namespace DatabaseSystemsProject.DB
                 connection.Open();
                 try
                 {
-                    String organisationInfoInsert = "INSERT INTO OrganisationInformation(Name, Description, ProfilePicturePath) " +
-                                        "VALUES (@Name, @Description, @ProfilePicturePath);";
+                    String organisationInfoInsert = "INSERT INTO Organizations(NAME, Description, BackgroundImagePath, AdminID) " +
+                                        "VALUES (@Name, @Description, @ProfilePicturePath, @AdminID);";
                     using (var transaction = connection.BeginTransaction())
                     {
                         using (var organistionInfoCommand = new MySqlCommand(organisationInfoInsert, connection, transaction))
                         {
                             organistionInfoCommand.Parameters.AddWithValue("@Name", name);
-                            organistionInfoCommand.Parameters.AddWithValue("@BirthDate", description);
+                            organistionInfoCommand.Parameters.AddWithValue("@Description", description);
                             organistionInfoCommand.Parameters.AddWithValue("@ProfilePicturePath", path);
-
+                            organistionInfoCommand.Parameters.AddWithValue("@AdminID", 1);
                             organistionInfoCommand.ExecuteNonQuery();
 
                         }
 
-
                         transaction.Commit();
-
 
                     }
                 }

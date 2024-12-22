@@ -15,8 +15,8 @@ namespace DatabaseSystemsProject.DB
 
         public static void registerInstructor(String name, String email, DateTime bod, String pfpPath, String phoneNumber, String hash, String salt, String organisation)
         {
-            String instructorInfoInsert = "INSERT INTO InstructorInformation(Name, BirthDate, ProfilePicturePath) " +
-                                        "VALUES (@Name, @BirthDate, @ProfilePicturePath);";
+            String instructorInfoInsert = "INSERT INTO InstructorInformation(Name, BirthDate, ProfilePicturePath,AdminID) " +
+                                        "VALUES (@Name, @BirthDate, @ProfilePicturePath,@AdminID);";
 
             String instructorContactInsert = "INSERT INTO InstructorContactInformation(ID, Email, PhoneNumber) " +
                                         "VALUES (@InstructorID, @Email, @PhoneNumber);";
@@ -39,6 +39,7 @@ namespace DatabaseSystemsProject.DB
                             instructorInfoCommand.Parameters.AddWithValue("@Name", name);
                             instructorInfoCommand.Parameters.AddWithValue("@BirthDate", bod);
                             instructorInfoCommand.Parameters.AddWithValue("@ProfilePicturePath", pfpPath);
+                            instructorInfoCommand.Parameters.AddWithValue("@AdminID", 1);
 
                             instructorInfoCommand.ExecuteNonQuery();
 

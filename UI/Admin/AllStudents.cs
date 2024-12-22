@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +24,7 @@ namespace DatabaseSystemsProject.UI.Admin.AllStudents
 
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Belal Salem", Description = "01501106719", Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719", Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719", Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719", Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719" ,Thumbnail = placeHolderPath },
-			};
+			var items = StudentQueries.getAllStudents();
 
 			foreach (var item in items)
 			{
@@ -44,7 +38,7 @@ namespace DatabaseSystemsProject.UI.Admin.AllStudents
 
 				PictureBox studentPfp = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,
@@ -53,18 +47,12 @@ namespace DatabaseSystemsProject.UI.Admin.AllStudents
 
 				Label studentName = new Label
 				{
-					Text = item.Name,
+					Text = item.name,
 					Font = new Font("Arial", 10, FontStyle.Bold),
-					Location = new Point(100, 10),
+					Location = new Point(100, 35),
 					Width = 250
 				};
 
-				Label studentPno = new Label
-				{
-					Text = "Phone Number: " + item.Description,
-					Location = new Point(100, 35),
-					Width = 150
-				};
 
 				Button viewBTN = new Button
 				{
@@ -75,11 +63,10 @@ namespace DatabaseSystemsProject.UI.Admin.AllStudents
 				};
 
 
-				viewBTN.Click += (sender, e) => { loadStudentData(item.Name,item.Description,item.Thumbnail); };
+				viewBTN.Click += (sender, e) => { loadStudentData(item.name,item.pno,item.email); };
 
 				coursePanel.Controls.Add(studentPfp);
 				coursePanel.Controls.Add(studentName);
-				coursePanel.Controls.Add(studentPno);
 				coursePanel.Controls.Add(viewBTN);
 				studentsFLP.Controls.Add(coursePanel);
 
@@ -88,11 +75,12 @@ namespace DatabaseSystemsProject.UI.Admin.AllStudents
 
 
 
-		void loadStudentData(String name,String pno, String pfpPath)
+		void loadStudentData(String name,String pno, String email)
 		{
-			stuPB.Image = Image.FromFile(pfpPath);
+			stuPB.Image = Image.FromFile(placeHolderPath);
 			stuNameLBL.Text = "Name: " + name;
 			stuPnoLBL.Text = "Phone number: " + pno;
+			emailLbl.Text = "Email: " + email;
 		}
 
 	}

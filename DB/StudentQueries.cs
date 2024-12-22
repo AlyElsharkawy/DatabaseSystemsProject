@@ -1,4 +1,5 @@
-﻿using DatabaseSystemsProject.Utility;
+﻿using DatabaseSystemsProject.Models;
+using DatabaseSystemsProject.Utility;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -126,5 +127,37 @@ namespace DatabaseSystemsProject.DB
 			return -1;
 
 		}
+
+		public static List <Student> getAllStudents()
+		{
+            var students = new List<Student>();
+            string query = "SELECT s.ID, s.Name, c.Email, c.PhoneNumber FROM StudentInformation s JOIN StudentContactInformation c ON s.ID = c.ID";
+            using (var conn = new MySqlConnection(dbSecret.connectionString))
+            {
+                conn.Open();
+                using (var cmm = new MySqlCommand(query, conn))
+                {
+
+                    using (var reader = cmm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+							var student = new Student
+							{
+								Id = reader.GetInt64("ID"),
+								name = reader.GetString("Name"),
+								email = reader.GetString("Email"),
+								pno = reader.GetString("PhoneNumber")
+							};
+
+                            students.Add(student);
+                        }
+                    }
+                }
+
+            }
+
+            return students;
+        }
 	}
 }
