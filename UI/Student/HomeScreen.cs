@@ -70,7 +70,11 @@ namespace DatabaseSystemsProject.UI.Student
 				};
 
 
-				courseBTN.Click += (sender, e) => { new CourseEnroll(item).Show(); };
+				courseBTN.Click += (sender, e) => { new CourseEnroll(item).ShowDialog();
+
+					CoursesFLP.Controls.Clear();
+					loadCourses();
+				};
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

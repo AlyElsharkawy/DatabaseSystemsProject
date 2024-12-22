@@ -53,11 +53,15 @@ namespace DatabaseSystemsProject.DB
 		public static List<Course> getAllCourses()
 		{
 			var courses = new List<Course>();
-			string query = "SELECT ID, Name, Description, ThumbnailPath, Cost FROM CourseInformation";
+			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath, c.Cost " +
+				"FROM CourseInformation c " +
+				"LEFT JOIN StudentEnrollment se " +
+				"ON c.ID = se.CourseID AND se.StudentID = @StudentID " +
+				"WHERE se.CourseID IS NULL;";
 			using (var conn = new MySqlConnection(dbSecret.connectionString)) { 
 				conn.Open();
 				using (var cmm = new MySqlCommand(query, conn)) {
-
+					cmm.Parameters.AddWithValue("@StudentID", 23);
 					using (var reader = cmm.ExecuteReader()) {
 						while (reader.Read()) {
 							var course = new Course
