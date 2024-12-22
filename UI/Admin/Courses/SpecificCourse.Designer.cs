@@ -64,6 +64,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Students List";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // courseDescription
             // 

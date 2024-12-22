@@ -26,7 +26,7 @@ namespace DatabaseSystemsProject.UI.Admin
 
         private void studentList_Click(object sender, EventArgs e)
         {
-			new AllStudents().Show();
+			new AllStudents(-1).Show();
         }
 
         private void coursesList_Click(object sender, EventArgs e)

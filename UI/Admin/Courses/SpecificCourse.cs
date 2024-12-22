@@ -14,14 +14,20 @@ namespace DatabaseSystemsProject.UI.Admin.Courses
 {
 	public partial class SpecificCourse : Form
 	{
+		Course selectedCourse;
 		public SpecificCourse(Course recievedCourse)
 		{
             String placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
-
+			selectedCourse = recievedCourse;
             InitializeComponent();
 			courseName.Text = recievedCourse.Name;
 			courseImage.Image = Image.FromFile(placeHolderPath);
 			courseDescription.Text = recievedCourse.Description;
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			new AllStudents(selectedCourse.Id).Show();
+        }
+    }
 }
