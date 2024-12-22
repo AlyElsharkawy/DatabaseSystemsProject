@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\CardQueries.cs" />
     <Compile Include="DB\CourseQueries.cs" />
     <Compile Include="DB\dbSecret.cs" />
     <Compile Include="DB\StudentQueries.cs" />
