@@ -58,6 +58,24 @@
     <Compile Include="UI\Admin\AddOrganization.Designer.cs">
       <DependentUpon>AddOrganization.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Admin\Courses\AllCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\Courses\AllCourses.Designer.cs">
+      <DependentUpon>AllCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\Courses\SpecificCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\Courses\SpecificCourse.Designer.cs">
+      <DependentUpon>SpecificCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\Courses\CourseStuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\Courses\CourseStuList.Designer.cs">
+      <DependentUpon>CourseStuList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +233,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\AddOrganization.resx">
       <DependentUpon>AddOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\Courses\AllCourses.resx">
+      <DependentUpon>AllCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\Courses\SpecificCourse.resx">
+      <DependentUpon>SpecificCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\Courses\CourseStuList.resx">
+      <DependentUpon>CourseStuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

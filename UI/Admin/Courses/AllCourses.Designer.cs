@@ -1,4 +1,4 @@
-﻿namespace DatabaseSystemsProject.UI.Student.MyCourses
+﻿namespace DatabaseSystemsProject.UI.Admin.Courses
 {
 	partial class AllCourses
 	{

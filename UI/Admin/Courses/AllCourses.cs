@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DatabaseSystemsProject.UI.Student.MyCourses
+namespace DatabaseSystemsProject.UI.Admin.Courses
+
 {
 	public partial class AllCourses : Form
 	{
@@ -67,24 +68,6 @@ namespace DatabaseSystemsProject.UI.Student.MyCourses
 					Width = 300
 				};
 
-				Button reviewBTN = new Button
-				{
-					Text = "Write a review",
-					Location = new Point(450, 25),
-					Width = 80,
-					Height = 50,
-					Enabled = false
-				};
-
-				Button certificateBTN = new Button
-				{
-					Text = "View Certificate",
-					Location = new Point(550, 25),
-					Width = 80,
-					Height = 50,
-					Enabled=false
-				};
-
 				Button enterBTN = new Button
 				{
 					Text = "Enter",
@@ -95,15 +78,11 @@ namespace DatabaseSystemsProject.UI.Student.MyCourses
 
 
 				enterBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
-				reviewBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
-				certificateBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);
 				coursePanel.Controls.Add(courseDesc);
 				coursePanel.Controls.Add(enterBTN);
-				coursePanel.Controls.Add(reviewBTN);
-				coursePanel.Controls.Add(certificateBTN);
 
 				CoursesFLP.Controls.Add(coursePanel);
 
