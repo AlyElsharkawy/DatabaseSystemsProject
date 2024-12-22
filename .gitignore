@@ -3,6 +3,7 @@
 bin/
 obj/
 Utility/Database.cs
+DB/dbSecret.cs
 
 # User-Specific Files
 *.user

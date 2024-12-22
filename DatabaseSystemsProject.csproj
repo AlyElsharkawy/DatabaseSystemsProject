@@ -98,6 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\dbSecret.cs" />
+    <Compile Include="DB\StudentQueries.cs" />
     <Compile Include="UI\Admin\AddInstructor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,7 +288,6 @@
     <Compile Include="UI\Student\Payment\AllCards.Designer.cs">
       <DependentUpon>AllCards.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\Database.cs" />
     <Compile Include="Utility\PasswordEncryption.cs" />
     <EmbeddedResource Include="UI\Admin\AddInstructor.resx">
       <DependentUpon>AddInstructor.cs</DependentUpon>
