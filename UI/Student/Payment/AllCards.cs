@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,17 +16,12 @@ namespace DatabaseSystemsProject.UI.Student.Payment
 		public AllCards()
 		{
 			InitializeComponent();
-			loadDummyData();
+			loadCards();
 		}
 
-		private void loadDummyData()
+		private void loadCards()
 		{
-			var items = new[]
-			{
-				new { Name="Belal Salem", Type = "Master Card", Number = "47**"},
-				new { Name="Belal Salem", Type = "Visa", Number = "53**"},
-				new { Name="Belal Salem", Type = "Visa", Number = "24**"},
-			};
+			var items = CardQueries.getStudentCards(23);
 
 			foreach (var item in items)
 			{
@@ -39,7 +35,7 @@ namespace DatabaseSystemsProject.UI.Student.Payment
 
 				Label cardName = new Label
 				{
-					Text = item.Name,
+					Text = item.NameOnCard,
 					Font = new Font("Arial", 10, FontStyle.Bold),
 					Location = new Point(10, 10),
 					Width = 100
@@ -55,7 +51,7 @@ namespace DatabaseSystemsProject.UI.Student.Payment
 
 				Label cardNumber = new Label
 				{
-					Text = item.Number,
+					Text = item.ID.ToString().Substring(0, 2) + new string('*', item.ID.ToString().Length - 2),
 					Location = new Point(10, 60),
 					Width = 100
 				};

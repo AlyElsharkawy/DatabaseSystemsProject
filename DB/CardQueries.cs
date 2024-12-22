@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DatabaseSystemsProject.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,40 @@ namespace DatabaseSystemsProject.DB
 				}
 			}
 
+		}
+
+		public static List<BankCard> getStudentCards(int studentID)
+		{
+			List<BankCard> cards = new List<BankCard>();
+			string query = "SELECT * FROM BankCard WHERE StudentID = @StudentID";
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@StudentID", studentID);
+					using (var reader = cmm.ExecuteReader()) {
+						while (reader.Read()) { 
+							var card = new BankCard
+							{
+								ID = reader.GetInt64("ID"),
+								StudentID = reader.GetInt64("StudentID"),
+								ExpirationYear = reader.GetInt16("ExpirationYear"),
+								ExpirationMonth = reader.GetByte("ExpirationMonth"),
+								NameOnCard = reader.GetString("NameOnCard"),
+								Type = reader.GetString("Type"),
+								CVV = reader.GetString("CVV")
+
+							};
+
+							cards.Add(card);
+						}
+					}
+
+				}
+			}
+
+			return cards;
 		}
 	}
 }

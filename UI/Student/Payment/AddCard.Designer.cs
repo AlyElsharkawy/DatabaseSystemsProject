@@ -59,7 +59,8 @@
 			this.typeCB.FormattingEnabled = true;
 			this.typeCB.Items.AddRange(new object[] {
             "Visa",
-            "Mastercard"});
+            "Mastercard",
+            "American Express"});
 			this.typeCB.Location = new System.Drawing.Point(143, 107);
 			this.typeCB.Name = "typeCB";
 			this.typeCB.Size = new System.Drawing.Size(121, 33);
