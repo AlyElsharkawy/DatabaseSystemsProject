@@ -78,5 +78,34 @@ namespace DatabaseSystemsProject.DB
 
 			return courses;
 		}
+	
+		public static void enrollStudent(long studentID, long courseID)
+		{
+			String query = "INSERT INTO StudentEnrollment(StudentID, CourseID) " +
+							"VALUES (@StudentID, @CourseID)";
+
+			using(var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				try
+				{
+					using (var trans = conn.BeginTransaction()) {
+						using (var cmd = new MySqlCommand(query, conn))
+						{
+							cmd.Parameters.AddWithValue("@StudentID", studentID);
+							cmd.Parameters.AddWithValue("@CourseID", courseID);
+
+							cmd.ExecuteNonQuery();
+						}
+
+						trans.Commit();
+					}
+				}
+				catch(Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
 	}
 }

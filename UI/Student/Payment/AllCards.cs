@@ -1,4 +1,5 @@
 ﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace DatabaseSystemsProject.UI.Student.Payment
 {
 	public partial class AllCards : Form
 	{
+		public  BankCard selectedCard = null;
 		public AllCards()
 		{
 			InitializeComponent();
@@ -65,7 +67,7 @@ namespace DatabaseSystemsProject.UI.Student.Payment
 				};
 
 
-				cardBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Type}"); };
+				cardBTN.Click += (sender, e) => { selectedCard = item; Close(); };
 				cardPanel.Controls.Add( cardName);
 				cardPanel.Controls.Add(cardType);
 				cardPanel.Controls.Add(cardNumber);

@@ -28,7 +28,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		private void enrollBTN_Click(object sender, EventArgs e)
 		{
-			new CoursePay(selectedCoruse).ShowDialog();
+			var pay = new CoursePay(selectedCoruse);
+			pay.ShowDialog();
+			if (pay.closePrev)
+			{
+				Close();
+			}
+			
 		}
 	}
 }

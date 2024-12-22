@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.priceLBL = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
+			this.confirmPurcBTN = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
+			this.usedCardLBL = new System.Windows.Forms.Label();
 			this.nameLBL = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
@@ -45,16 +45,17 @@
 			this.priceLBL.TabIndex = 5;
 			this.priceLBL.Text = "Price: 30000$";
 			// 
-			// button1
+			// confirmPurcBTN
 			// 
-			this.button1.Enabled = false;
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(43, 221);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(219, 32);
-			this.button1.TabIndex = 6;
-			this.button1.Text = "Confirm Purchase";
-			this.button1.UseVisualStyleBackColor = true;
+			this.confirmPurcBTN.Enabled = false;
+			this.confirmPurcBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.confirmPurcBTN.Location = new System.Drawing.Point(43, 221);
+			this.confirmPurcBTN.Name = "confirmPurcBTN";
+			this.confirmPurcBTN.Size = new System.Drawing.Size(219, 32);
+			this.confirmPurcBTN.TabIndex = 6;
+			this.confirmPurcBTN.Text = "Confirm Purchase";
+			this.confirmPurcBTN.UseVisualStyleBackColor = true;
+			this.confirmPurcBTN.Click += new System.EventHandler(this.confirmPurcBTN_Click);
 			// 
 			// button2
 			// 
@@ -67,15 +68,15 @@
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// label2
+			// usedCardLBL
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.label2.Location = new System.Drawing.Point(60, 163);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(184, 26);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "No Card Selected";
+			this.usedCardLBL.AutoSize = true;
+			this.usedCardLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.usedCardLBL.Location = new System.Drawing.Point(60, 163);
+			this.usedCardLBL.Name = "usedCardLBL";
+			this.usedCardLBL.Size = new System.Drawing.Size(184, 26);
+			this.usedCardLBL.TabIndex = 8;
+			this.usedCardLBL.Text = "No Card Selected";
 			// 
 			// nameLBL
 			// 
@@ -94,9 +95,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(312, 263);
 			this.Controls.Add(this.nameLBL);
-			this.Controls.Add(this.label2);
+			this.Controls.Add(this.usedCardLBL);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.confirmPurcBTN);
 			this.Controls.Add(this.priceLBL);
 			this.Name = "CoursePay";
 			this.Text = "CoursePay";
@@ -107,9 +108,9 @@
 
 		#endregion
 		private System.Windows.Forms.Label priceLBL;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button confirmPurcBTN;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label usedCardLBL;
 		private System.Windows.Forms.Label nameLBL;
 	}
 }
