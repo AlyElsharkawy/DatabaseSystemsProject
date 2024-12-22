@@ -91,5 +91,10 @@ namespace DatabaseSystemsProject.UI.Student
 		{
 			new MyCourses().Show();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }
