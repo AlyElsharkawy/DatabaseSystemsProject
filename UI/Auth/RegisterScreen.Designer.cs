@@ -45,6 +45,8 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.button3 = new System.Windows.Forms.Button();
 			this.pfpPathLBL = new System.Windows.Forms.Label();
+			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -95,7 +97,7 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(205, 310);
+			this.button2.Location = new System.Drawing.Point(205, 323);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 7;
@@ -182,7 +184,7 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(330, 310);
+			this.button3.Location = new System.Drawing.Point(330, 323);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(75, 23);
 			this.button3.TabIndex = 16;
@@ -199,11 +201,31 @@
 			this.pfpPathLBL.TabIndex = 17;
 			this.pfpPathLBL.Text = "Path";
 			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(205, 291);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.PasswordChar = '*';
+			this.textBox3.Size = new System.Drawing.Size(200, 20);
+			this.textBox3.TabIndex = 18;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.label8.Location = new System.Drawing.Point(62, 291);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(113, 20);
+			this.label8.TabIndex = 19;
+			this.label8.Text = "Phone number";
+			// 
 			// RegisterScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(514, 390);
+			this.Controls.Add(this.label8);
+			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.pfpPathLBL);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.label7);
@@ -247,5 +269,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Label pfpPathLBL;
+		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.Label label8;
 	}
 }
