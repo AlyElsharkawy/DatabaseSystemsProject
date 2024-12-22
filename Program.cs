@@ -1,11 +1,10 @@
 ﻿using DatabaseSystemsProject.UI.Admin;
-using DatabaseSystemsProject.UI.Admin;
 using DatabaseSystemsProject.UI.Admin.Courses;
 using DatabaseSystemsProject.UI.Admin.Courses.CourseStuList;
 using DatabaseSystemsProject.UI.Auth;
+using DatabaseSystemsProject.UI.Instructor;
 using DatabaseSystemsProject.UI.Instructor.Course.Creation;
 using DatabaseSystemsProject.UI.Instructor.ManageStudent;
-using DatabaseSystemsProject.UI.Student;
 using DatabaseSystemsProject.UI.Student.Courses;
 using DatabaseSystemsProject.UI.Student.Payment;
 using DatabaseSystemsProject.Utility;

@@ -33,5 +33,15 @@ namespace DatabaseSystemsProject.UI.Admin
         {
 			new AllCourses().ShowDialog();
         }
-    }
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			new AddOrganization().ShowDialog();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			new AddInstructor().ShowDialog();
+		}
+	}
 }

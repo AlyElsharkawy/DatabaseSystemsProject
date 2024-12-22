@@ -109,6 +109,12 @@
     <Compile Include="Models\BankCard.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="UI\Admin\AddAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\AddAdmin.Designer.cs">
+      <DependentUpon>AddAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin\AddInstructor.cs">
       <SubType>Form</SubType>
     </Compile>
