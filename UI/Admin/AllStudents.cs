@@ -10,21 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DatabaseSystemsProject.UI.Admin.AllStudents
+namespace DatabaseSystemsProject.UI.Admin
 {
 	public partial class AllStudents : Form
 	{
 		String placeHolderPath;
-		public AllStudents()
+		public AllStudents(long courseid)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "personPlaceholder.jpg");
-			loadDummyData();
+			loadDummyData(courseid);
 		}
 
-		private void loadDummyData()
+		private void loadDummyData(long courseid)
 		{
-			var items = StudentQueries.getAllStudents();
+			var items = (courseid <= -1) ? StudentQueries.getAllStudents() : StudentQueries.getCourseStudents(courseid);
 
 			foreach (var item in items)
 			{

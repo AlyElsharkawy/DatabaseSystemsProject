@@ -1,5 +1,5 @@
 ﻿using DatabaseSystemsProject.UI.Admin;
-using DatabaseSystemsProject.UI.Admin.AllStudents;
+using DatabaseSystemsProject.UI.Admin;
 using DatabaseSystemsProject.UI.Admin.Courses;
 using DatabaseSystemsProject.UI.Admin.Courses.CourseStuList;
 using DatabaseSystemsProject.UI.Auth;
@@ -27,7 +27,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new HomeScreen());
+			Application.Run(new Home());
 		}
 	}
 }
