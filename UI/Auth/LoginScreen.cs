@@ -1,5 +1,6 @@
 ﻿using DatabaseSystemsProject.UI.Auth;
 using DatabaseSystemsProject.UI.Student;
+using DatabaseSystemsProject.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace DatabaseSystemsProject
 		public LoginScreen()
 		{
 			InitializeComponent();
+			
 		}
 
 		private void registerBTN_Click(object sender, EventArgs e)

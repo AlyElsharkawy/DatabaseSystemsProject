@@ -1,9 +1,11 @@
 ﻿using DatabaseSystemsProject.UI.Admin.Courses;
 using DatabaseSystemsProject.UI.Admin.Courses.CourseStuList;
+using DatabaseSystemsProject.UI.Auth;
 using DatabaseSystemsProject.UI.Instructor;
 using DatabaseSystemsProject.UI.Instructor.ManageStudent;
 using DatabaseSystemsProject.UI.Student.Courses;
 using DatabaseSystemsProject.UI.Student.Payment;
+using DatabaseSystemsProject.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new CourseStuList());
+			Application.Run(new LoginScreen());
 		}
 	}
 }

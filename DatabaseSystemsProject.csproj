@@ -287,6 +287,7 @@
       <DependentUpon>AllCards.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\Database.cs" />
+    <Compile Include="Utility\PasswordEncryption.cs" />
     <EmbeddedResource Include="UI\Admin\AddInstructor.resx">
       <DependentUpon>AddInstructor.cs</DependentUpon>
     </EmbeddedResource>
