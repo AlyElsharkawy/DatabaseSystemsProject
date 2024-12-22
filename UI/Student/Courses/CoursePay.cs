@@ -45,6 +45,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		private void confirmPurcBTN_Click(object sender, EventArgs e)
 		{
+			confirmPurcBTN.Enabled = false;
 			InvoiceQueries.createInvoice(23, selectedCourse.Id, usedBankCard.ID, selectedCourse.price);
 			CourseQueries.enrollStudent(23, selectedCourse.Id);
 			closePrev = true;
