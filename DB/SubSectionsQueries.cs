@@ -54,8 +54,8 @@ namespace DatabaseSystemsProject.DB
 
 		public static void createReading(long modID, long courseID, String title, String content)
 		{
-			String query = "INSERT INTO QuestionVideo(ModuleID, CourseID, Title, Content) " +
-				"VALUES(@ModuleID, @CourseID, @Title, @Content);";
+			String query = "INSERT INTO QuestionReading(ModuleID, CourseID, Title, Content) " +
+							"VALUES (@ModuleID, @CourseID, @Title, @Content);";
 
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
@@ -92,10 +92,10 @@ namespace DatabaseSystemsProject.DB
 
 		}
 
-		public static void createSAQ(long modID, long courseID, String prompt, byte maxGrade)
+		public static long createSAQ(long modID, long courseID, String prompt, byte maxGrade)
 		{
-			String query = "INSERT INTO QuestionVideo(ModuleID, CourseID, Prompt, MaxGrade) " +
-				"VALUES(@ModuleID, @CourseID, @Prompt, @MaxGrade);";
+			String query = "INSERT INTO QuestionShortAnswer(ModuleID, CourseID, Prompt, MaxGrade) " +
+							"VALUES (@ModuleID, @CourseID, @Prompt, @MaxGrade)";
 
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
@@ -120,12 +120,15 @@ namespace DatabaseSystemsProject.DB
 
 						trans.Commit();
 
+						return id;
+
 					}
 				}
 				catch (Exception ex)
 				{
 
 					Console.WriteLine(ex.ToString());
+					return -1;
 				}
 			}
 

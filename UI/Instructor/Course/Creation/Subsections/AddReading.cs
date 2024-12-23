@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,8 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation.Subsections
 		{
 			readingTitle = titleTB.Text;
 			String content = contentTb.Text;
+			SubSectionsQueries.createReading(modID, courseID, readingTitle, content);
+			Close();
 
 		}
 	}

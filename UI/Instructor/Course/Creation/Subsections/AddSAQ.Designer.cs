@@ -29,11 +29,11 @@
 		private void InitializeComponent()
 		{
 			this.button1 = new System.Windows.Forms.Button();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.maxGrade = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.promptTB = new System.Windows.Forms.RichTextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.maxGrade)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -45,14 +45,15 @@
 			this.button1.TabIndex = 11;
 			this.button1.Text = "Submit";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// numericUpDown1
+			// maxGrade
 			// 
-			this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.numericUpDown1.Location = new System.Drawing.Point(141, 401);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(120, 32);
-			this.numericUpDown1.TabIndex = 10;
+			this.maxGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.maxGrade.Location = new System.Drawing.Point(141, 401);
+			this.maxGrade.Name = "maxGrade";
+			this.maxGrade.Size = new System.Drawing.Size(120, 32);
+			this.maxGrade.TabIndex = 10;
 			// 
 			// label2
 			// 
@@ -64,14 +65,14 @@
 			this.label2.TabIndex = 9;
 			this.label2.Text = "Max Grade";
 			// 
-			// richTextBox1
+			// promptTB
 			// 
-			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.richTextBox1.Location = new System.Drawing.Point(141, 23);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(537, 361);
-			this.richTextBox1.TabIndex = 8;
-			this.richTextBox1.Text = "";
+			this.promptTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.promptTB.Location = new System.Drawing.Point(141, 23);
+			this.promptTB.Name = "promptTB";
+			this.promptTB.Size = new System.Drawing.Size(537, 361);
+			this.promptTB.TabIndex = 8;
+			this.promptTB.Text = "";
 			// 
 			// label1
 			// 
@@ -89,13 +90,13 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(701, 450);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.maxGrade);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.promptTB);
 			this.Controls.Add(this.label1);
 			this.Name = "AddSAQ";
 			this.Text = "AddSAQ";
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.maxGrade)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -104,9 +105,9 @@
 		#endregion
 
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown maxGrade;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox promptTB;
 		private System.Windows.Forms.Label label1;
 	}
 }

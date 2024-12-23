@@ -57,6 +57,10 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 			var node = getSelectedModule();
 			var video = new AddVideo(courseId, (long)node.Tag);
 			video.ShowDialog();
+			if (String.IsNullOrEmpty(video.videoTitle))
+			{
+				return;
+			}
 			var newNode = new TreeNode(video.videoTitle);
 			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 
@@ -78,7 +82,16 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			new AddSAQ().ShowDialog();
+			var node = getSelectedModule();
+			var saq = new AddSAQ(courseId, (long)node.Tag);
+			saq.ShowDialog();
+			if (saq.secID <= -1)
+			{
+				return;
+			}
+
+			var newNode = new TreeNode("Short Question");
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 		}
 
 		private void button6_Click(object sender, EventArgs e)
