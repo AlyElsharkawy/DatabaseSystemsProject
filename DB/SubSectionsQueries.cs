@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace DatabaseSystemsProject.DB
@@ -267,5 +268,180 @@ namespace DatabaseSystemsProject.DB
 
 		}
 
+
+
+		public static void createSolvedMCQ(mcq mcq, byte chosenAnswer,long studentID)
+		{
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedQuestionMultipleChoice (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", mcq.ID);
+						command.Parameters.AddWithValue("@ModuleID", mcq.ModuleID);
+						command.Parameters.AddWithValue("@CourseID", mcq.CourseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@StudentAnswer", chosenAnswer);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+		}
+
+		public static void createSolvedSAQ(SAQ saq, String answer, long studentID)
+		{
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedShortAnswerQuestion (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", saq.ID);
+						command.Parameters.AddWithValue("@ModuleID", saq.ModuleID);
+						command.Parameters.AddWithValue("@CourseID", saq.CourseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@StudentAnswer", answer);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+		}
+
+		public static void createSolvedAssignment(Assignment assign, String filePath, long studentID)
+		{
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedAssignment (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", assign.ID);
+						command.Parameters.AddWithValue("@ModuleID", assign.ModuleID);
+						command.Parameters.AddWithValue("@CourseID", assign.CourseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@StudentAnswer", filePath);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+		}
+
+		public static void createSolvedTFQ(TFQ tfq, byte choosenAnswer, long studentID)
+		{
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedQuestionTrueFalse (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", tfq.ID);
+						command.Parameters.AddWithValue("@ModuleID", tfq.ModuleID);
+						command.Parameters.AddWithValue("@CourseID", tfq.CourseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@StudentAnswer", choosenAnswer);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+		}
+
+		public static void markVideoSeen(Video video, long studentID) {
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedQuestionVideo (ID, ModuleID, CourseID, StudentID, IsDone) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @IsDone";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", video.Id);
+						command.Parameters.AddWithValue("@ModuleID", video.modID);
+						command.Parameters.AddWithValue("@CourseID", video.courseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@IsDone", 1);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+		}
+
+		public static void markReadingSeen(Reading reading, long studentID) {
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = "INSERT INTO SolvedQuestionReading (ID, ModuleID, CourseID, StudentID, IsDone) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @IsDone";
+
+					using (var command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ID", reading.ID);
+						command.Parameters.AddWithValue("@ModuleID", reading.ModuleID);
+						command.Parameters.AddWithValue("@CourseID", reading.CourseID);
+						command.Parameters.AddWithValue("@StudentID", studentID);
+						command.Parameters.AddWithValue("@IsDone", 1);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+				}
+			}
+
+		}
 	}
 }

@@ -16,11 +16,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 	public partial class ModulesView : Form
 	{
 		Course selectedCourse;
-		public ModulesView(Course recievedCourse)
+		long studentID;
+		public ModulesView(Course recievedCourse,long rStudentID)
 		{
 			InitializeComponent();
 
 			selectedCourse = recievedCourse;
+			studentID = rStudentID;	
 			loadModules();
 		}
 
@@ -193,25 +195,30 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			RadioButton option1 = new RadioButton()
 			{
 				Text = mcq.QuestionOne,
-				Size = new Size(200,30)
+				Size = new Size(200,30),
+				Tag = 1
+				
 			};
 
 			RadioButton option2 = new RadioButton()
 			{
 				Text = mcq.QuestionTwo,
-				Size = new Size(200, 30)
+				Size = new Size(200, 30),
+				Tag = 2
 			};
 
 			RadioButton option3 = new RadioButton()
 			{
 				Text = mcq.QuestionThree,
-				Size = new Size(200, 30)
+				Size = new Size(200, 30),
+				Tag = 3
 			};
 
 			RadioButton option4 = new RadioButton()
 			{
 				Text = mcq.QuestionFour,
-				Size = new Size(200, 30)
+				Size = new Size(200, 30),
+				Tag = 4
 			};
 
 			optionsPanel.Controls.Add(option1);
@@ -234,7 +241,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					if (control is RadioButton radioButton && radioButton.Checked)
 					{
-						MessageBox.Show($"Selected: {radioButton.Text}");
+						solveMCQ(mcq, (byte)radioButton.Tag);
 						break;
 					}
 				}
@@ -244,7 +251,6 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 		
 			moduleFLP.Controls.Add(mcqPanel);
 		}
-
 
 		private void loadAssignment(Assignment assignment)
 		{
@@ -269,7 +275,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 					openFileDialog.Filter = "PDF Files|*.pdf|All Files|*.*";
 					if (openFileDialog.ShowDialog() == DialogResult.OK)
 					{
-						MessageBox.Show($"Solution file uploaded: {openFileDialog.FileName}");
+						solveAssignment(assignment, openFileDialog.FileName);
 					}
 				}
 			};
@@ -325,7 +331,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			submitButton.Text = "Submit Answer";
 			submitButton.Size = new Size(150, 30);
 			submitButton.Location = new Point(10, 350);
-			submitButton.Click += (sender, e) => MessageBox.Show($"Answer submitted: {answerTextBox.Text}");
+			submitButton.Click += (sender, e) => solveSAQ(saq,answerTextBox.Text);
 			saqPanel.Controls.Add(submitButton);
 
 			moduleFLP.Controls.Add(saqPanel);
@@ -363,11 +369,11 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			{
 				if (trueRadioButton.Checked)
 				{
-					MessageBox.Show("Answer: True");
+					solveTFQ(tf, 1);
 				}
 				else if (falseRadioButton.Checked)
 				{
-					MessageBox.Show("Answer: False");
+					solveTFQ(tf, 0);
 				}
 				else
 				{
@@ -388,5 +394,39 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 			moduleFLP.Controls.Clear();
 		}
+
+
+		private void solveMCQ(mcq mcq,byte chosenAnswer)
+		{
+			SubSectionsQueries.createSolvedMCQ(mcq, chosenAnswer,studentID);
+		}
+
+		private void solveAssignment(Assignment assignment, String chosenAnswer)
+		{
+			SubSectionsQueries.createSolvedAssignment(assignment, chosenAnswer, studentID);
+		}
+
+		private void solveSAQ(SAQ mcq, string chosenAnswer)
+		{
+			SubSectionsQueries.createSolvedSAQ(mcq, chosenAnswer, studentID);
+		}
+
+
+		private void solveTFQ(TFQ mcq, byte chosenAnswer)
+		{
+			SubSectionsQueries.createSolvedTFQ(mcq, chosenAnswer, studentID);
+		}
+
+		private void seeVideo(Video video)
+		{
+			SubSectionsQueries.markVideoSeen(video, studentID);
+		}
+
+		private void seeRead(Reading reading)
+		{
+			SubSectionsQueries.markReadingSeen(reading, studentID);
+		}
+
+		
 	}
 }
