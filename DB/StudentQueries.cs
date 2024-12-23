@@ -163,7 +163,11 @@ namespace DatabaseSystemsProject.DB
         public static List<Student> getCourseStudents(long courseid)
         {
             var students = new List<Student>();
-            String query = "SELECT s.Name, s.ID, c.PhoneNumber, c.Email FROM StudentInformation s JOIN StudentEnrollment e ON s.ID = e.StudentID JOIN StudentContactInformation c ON c.ID = s.ID WHERE e.CourseID = @courseid";
+            String query = "SELECT s.Name, s.ID, c.PhoneNumber, c.Email " +
+				"FROM StudentInformation s " +
+				"JOIN StudentEnrollment e ON s.ID = e.StudentID " +
+				"JOIN StudentContactInformation c ON c.ID = s.ID " +
+				"WHERE e.CourseID = @courseid";
 
             using (var conn = new MySqlConnection(dbSecret.connectionString))
             {

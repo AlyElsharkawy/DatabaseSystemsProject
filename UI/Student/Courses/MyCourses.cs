@@ -67,7 +67,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 					Location = new Point(450, 25),
 					Width = 80,
 					Height = 50,
-					Enabled = false
+					
 				};
 
 				Button certificateBTN = new Button
@@ -76,7 +76,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 					Location = new Point(550, 25),
 					Width = 80,
 					Height = 50,
-					Enabled=false
+					
 				};
 
 				Button enterBTN = new Button
@@ -89,8 +89,8 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 
 
 				enterBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
-				reviewBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
-				certificateBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, 23).ShowDialog(); };
+				certificateBTN.Click += (sender, e) => { new Certificate(23, item.Id).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

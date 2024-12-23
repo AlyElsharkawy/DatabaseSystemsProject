@@ -111,6 +111,7 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentCertificate.cs" />
     <Compile Include="UI\Admin\AddAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +307,9 @@
       <DependentUpon>AllCards.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\PasswordEncryption.cs" />
+    <EmbeddedResource Include="UI\Admin\AddAdmin.resx">
+      <DependentUpon>AddAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\AddInstructor.resx">
       <DependentUpon>AddInstructor.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsWork.resx">
       <DependentUpon>StudentsWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Student\Courses\Certificate.resx">
+      <DependentUpon>Certificate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Student\Courses\CourseEnroll.resx">
       <DependentUpon>CourseEnroll.cs</DependentUpon>

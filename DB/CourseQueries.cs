@@ -4,14 +4,19 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using System.Xml.Linq;
 
 namespace DatabaseSystemsProject.DB
 {
 	public class CourseQueries
 	{
-		public static long CreateCourse(String name,decimal price,String thumbPath,String description)
+        static MySqlConnection connection;
+        public static long CreateCourse(String name,decimal price,String thumbPath,String description)
 		{
 			String courseInsert = "INSERT INTO CourseInformation(Name, Description, ThumbnailPath, Cost) " +
 				"VALUES (@Name, @Description, @Thumbnail, @Cost);";
@@ -212,5 +217,44 @@ namespace DatabaseSystemsProject.DB
 
 			return courses;
 		}
+
+		public static void addReviewtoCourse(String title, String content, byte rating, long courseID, long studentID)
+		{
+			String CourseReviews = "INSERT INTO CourseReviews (StudentID, CourseID, Title, CONTENT, Rating)" +
+				"Values(@sid, @cid, @title, @content, @rating)";
+
+            using (connection = new MySqlConnection(dbSecret.connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        long reviewID;
+                        using (var reviewInfoCommand = new MySqlCommand(CourseReviews, connection, transaction))
+                        {
+                            reviewInfoCommand.Parameters.AddWithValue("@sid", studentID);
+                            reviewInfoCommand.Parameters.AddWithValue("@cid", courseID);
+                            reviewInfoCommand.Parameters.AddWithValue("@title", title);
+                            reviewInfoCommand.Parameters.AddWithValue("@content", content);
+                            reviewInfoCommand.Parameters.AddWithValue("@rating", rating);
+
+                            reviewInfoCommand.ExecuteNonQuery();
+
+                            reviewID = reviewInfoCommand.LastInsertedId;
+                        }
+
+                        
+                        transaction.Commit();
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+        }
 	}
 }

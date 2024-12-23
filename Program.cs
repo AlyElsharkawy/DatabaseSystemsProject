@@ -2,7 +2,7 @@
 using DatabaseSystemsProject.UI.Admin.Courses;
 using DatabaseSystemsProject.UI.Admin.Courses.CourseStuList;
 using DatabaseSystemsProject.UI.Auth;
-using DatabaseSystemsProject.UI.Instructor;
+using DatabaseSystemsProject.UI.Student;
 using DatabaseSystemsProject.UI.Instructor.Course.Creation;
 using DatabaseSystemsProject.UI.Instructor.ManageStudent;
 using DatabaseSystemsProject.UI.Student.Courses;
@@ -26,7 +26,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new ModulesEdit(3));
+			Application.Run(new HomeScreen());
 		}
 	}
 }

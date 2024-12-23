@@ -43,5 +43,10 @@ namespace DatabaseSystemsProject.UI.Admin
 		{
 			new AddInstructor().ShowDialog();
 		}
-	}
+
+        private void addAdmin_Click(object sender, EventArgs e)
+        {
+			new AddAdmin().ShowDialog();
+        }
+    }
 }
