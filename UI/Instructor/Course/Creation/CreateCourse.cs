@@ -14,9 +14,12 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 {
 	public partial class CreateCourse : Form
 	{
-		public CreateCourse()
+		long instructorID;
+
+        public CreateCourse(long instructorID)
 		{
 			InitializeComponent();
+			this.instructorID = instructorID;
 		}
 
 		static long currentID = -1;
@@ -55,7 +58,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 			try
 			{
 				decimal price = decimal.Parse(priceTB.Text);
-				currentID = CourseQueries.CreateCourse(name, price, path, desc);
+				currentID = CourseQueries.CreateCourse(name, price, path, desc, instructorID);
 			}
 			catch
 			{

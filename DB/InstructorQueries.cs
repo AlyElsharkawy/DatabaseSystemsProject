@@ -13,7 +13,7 @@ namespace DatabaseSystemsProject.DB
         static MySqlConnection connection;
 
 
-        public static void registerInstructor(String name, String email, DateTime bod, String pfpPath, String phoneNumber, String hash, String salt, long orgID)
+        public static void registerInstructor(String name, String email, DateTime bod, String pfpPath, String phoneNumber, String hash, String salt, long orgID, long adminID)
         {
             String instructorInfoInsert = "INSERT INTO InstructorInformation(Name, BirthDate, ProfilePicturePath,AdminID) " +
                                         "VALUES (@Name, @BirthDate, @ProfilePicturePath,@AdminID);";
@@ -30,7 +30,10 @@ namespace DatabaseSystemsProject.DB
             String instructorOrganization = "INSERT INTO OrganizationInstructors(ID,InstructorID) " +
                                              "VALUES(@OrgID,@InstructorID)";
 
-			using (connection = new MySqlConnection(dbSecret.connectionString))
+            String userEmails = "INSERT INTO UserEmails(Email, UserType)" +
+                "VALUES(@mail, @type)";
+
+            using (connection = new MySqlConnection(dbSecret.connectionString))
             {
                 connection.Open();
                 try
@@ -43,7 +46,7 @@ namespace DatabaseSystemsProject.DB
                             instructorInfoCommand.Parameters.AddWithValue("@Name", name);
                             instructorInfoCommand.Parameters.AddWithValue("@BirthDate", bod);
                             instructorInfoCommand.Parameters.AddWithValue("@ProfilePicturePath", pfpPath);
-                            instructorInfoCommand.Parameters.AddWithValue("@AdminID", 1);
+                            instructorInfoCommand.Parameters.AddWithValue("@AdminID", adminID);
 
                             instructorInfoCommand.ExecuteNonQuery();
 
@@ -73,6 +76,14 @@ namespace DatabaseSystemsProject.DB
                             fourthCommand.Parameters.AddWithValue("@instructorID", instructorID);
 
                             fourthCommand.ExecuteNonQuery();
+                        }
+
+                        using (var sixthCommand = new MySqlCommand(userEmails, connection, transaction))
+                        {
+                            sixthCommand.Parameters.AddWithValue("@mail", email);
+                            sixthCommand.Parameters.AddWithValue("@type", 3);
+
+                            sixthCommand.ExecuteNonQuery();
                         }
 
                         if (orgID != -1)

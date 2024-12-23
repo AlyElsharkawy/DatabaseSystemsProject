@@ -14,9 +14,11 @@ namespace DatabaseSystemsProject.UI.Admin
 {
 	public partial class AddOrganization : Form
 	{
-		public AddOrganization()
+        long adminID;
+		public AddOrganization(long adminID)
 		{
 			InitializeComponent();
+            this.adminID = adminID;
 		}
 
         String path;
@@ -46,7 +48,7 @@ namespace DatabaseSystemsProject.UI.Admin
             String desc = organisationDescription.Text;
             String path = pfpPathLBL.Text;
 
-            OrganisationQueries.registerOrganisation(name, desc, path);
+            OrganisationQueries.registerOrganisation(name, desc, path, adminID);
 
             Close();
         }

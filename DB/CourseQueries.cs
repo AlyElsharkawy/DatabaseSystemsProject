@@ -16,11 +16,13 @@ namespace DatabaseSystemsProject.DB
 	public class CourseQueries
 	{
         static MySqlConnection connection;
-        public static long CreateCourse(String name,decimal price,String thumbPath,String description)
+        public static long CreateCourse(String name,decimal price,String thumbPath,String description, long instructorID)
 		{
 			String courseInsert = "INSERT INTO CourseInformation(Name, Description, ThumbnailPath, Cost) " +
 				"VALUES (@Name, @Description, @Thumbnail, @Cost);";
 
+			String relInsert = "INSERT INTO CourseInstructors(CourseID, InstructorID) " +
+				"VALUES(@courseID, @instructorID) ";
 
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
@@ -43,7 +45,16 @@ namespace DatabaseSystemsProject.DB
 							id = command.LastInsertedId;
 						}
 
-						trans.Commit();
+                        using (var seccommand = new MySqlCommand(relInsert, connection))
+                        {
+
+                            seccommand.Parameters.AddWithValue("@courseID", id);
+                            seccommand.Parameters.AddWithValue("@instructorID", instructorID);
+
+                            seccommand.ExecuteNonQuery();
+
+                        }
+                        trans.Commit();
 						return id;
 					}
 				}
@@ -86,7 +97,7 @@ namespace DatabaseSystemsProject.DB
 
             return courses;
         }
-        public static List<Course> getUnenrolledStudentCourses()
+        public static List<Course> getUnenrolledStudentCourses(long studentID)
 		{
 			var courses = new List<Course>();
 			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath, c.Cost " +
@@ -97,7 +108,7 @@ namespace DatabaseSystemsProject.DB
 			using (var conn = new MySqlConnection(dbSecret.connectionString)) { 
 				conn.Open();
 				using (var cmm = new MySqlCommand(query, conn)) {
-					cmm.Parameters.AddWithValue("@StudentID", 1);
+					cmm.Parameters.AddWithValue("@StudentID", studentID);
 					using (var reader = cmm.ExecuteReader()) {
 						while (reader.Read()) {
 							var course = new Course
@@ -187,15 +198,15 @@ namespace DatabaseSystemsProject.DB
 
 			var courses = new List<Course>();
 			string query = "SELECT c.ID, c.Name, c.Description, c.ThumbnailPath " +
-							"FROM StudentEnrollment se " +
-							"JOIN CourseInformation c ON se.COURSEID = c.ID " +
-							"WHERE se.StudentID = @StudentID";
+							"FROM CourseInstructors se " +
+							"JOIN CourseInformation c ON se.CourseID = c.ID " +
+							"WHERE se.InstructorID = @instructorID";
 			using (var conn = new MySqlConnection(dbSecret.connectionString))
 			{
 				conn.Open();
 				using (var cmm = new MySqlCommand(query, conn))
 				{
-					cmm.Parameters.AddWithValue("@StudentID", instructorID);
+					cmm.Parameters.AddWithValue("@instructorID", instructorID);
 					using (var reader = cmm.ExecuteReader())
 					{
 						while (reader.Read())

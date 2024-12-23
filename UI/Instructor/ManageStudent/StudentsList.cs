@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,23 +15,18 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 	public partial class StudentsList : Form
 	{
 		String placeHolderPath;
-		public StudentsList()
+		long courseID;
+		public StudentsList(long courseID)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "personPlaceholder.jpg");
+			this.courseID = courseID;
 			loadDummyData();
 		}
 
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Belal Salem", Description = "01501106719",CompletedModules= 3, Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719",CompletedModules= 3, Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719",CompletedModules= 3, Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719",CompletedModules= 3, Thumbnail = placeHolderPath },
-				new { Name = "Belal Salem", Description = "01501106719",CompletedModules= 3, Thumbnail = placeHolderPath },
-			};
+			var items = StudentQueries.getCourseStudents(courseID);
 
 			foreach (var item in items)
 			{
@@ -44,7 +40,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 
 				PictureBox studentPfp = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,
@@ -53,7 +49,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 
 				Label studentName = new Label
 				{
-					Text = item.Name,
+					Text = item.name,
 					Font = new Font("Arial", 10, FontStyle.Bold),
 					Location = new Point(100, 10),
 					Width = 300
@@ -61,7 +57,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 
 				Label studentPno = new Label
 				{
-					Text = "Phone Number: " + item.Description,
+					Text = "Phone Number: " + item.pno,
 					Location = new Point(100, 35),
 					Width = 300
 				};
@@ -70,7 +66,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 
 				Label modulesProg = new Label
 				{
-					Text = $"Completed: {item.CompletedModules}/6 ",
+					Text = $"Completed: 0/6 ",
 					Font = new Font("Arial", 10, FontStyle.Bold),
 					Location = new Point(450, 25),
 					Width = 200
@@ -93,7 +89,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 				};
 
 
-				assignBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				assignBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.name}"); };
 
 				coursePanel.Controls.Add(studentPfp);
 				coursePanel.Controls.Add(studentName);

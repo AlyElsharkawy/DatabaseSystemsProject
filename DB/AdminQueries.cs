@@ -25,6 +25,9 @@ namespace DatabaseSystemsProject.DB
             String adminLockoutInsert = "INSERT INTO AdminLockoutInformation(ID) " +
                                         "VALUES (@AdminID);";
 
+            String userEmails = "INSERT INTO UserEmails(Email, UserType)" +
+             "VALUES(@mail, @type)";
+
             using (connection = new MySqlConnection(dbSecret.connectionString))
             {
                 connection.Open();
@@ -68,6 +71,14 @@ namespace DatabaseSystemsProject.DB
                             fourthCommand.Parameters.AddWithValue("@AdminID", adminID);
 
                             fourthCommand.ExecuteNonQuery();
+                        }
+
+                        using (var fifthCommand = new MySqlCommand(userEmails, connection, transaction))
+                        {
+                            fifthCommand.Parameters.AddWithValue("@mail", email);
+                            fifthCommand.Parameters.AddWithValue("@type", 2);
+
+                            fifthCommand.ExecuteNonQuery();
                         }
 
                         transaction.Commit();

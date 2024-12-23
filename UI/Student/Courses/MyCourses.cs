@@ -16,16 +16,18 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 	{
 
 		String placeHolderPath;
-		public MyCourses()
+		long studentID;
+		public MyCourses(long studentID)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
+			this.studentID = studentID;
 			loadDummyData();
 		}
 
 		private void loadDummyData()
 		{
-			var items = CourseQueries.getStudentCourses(23);
+			var items = CourseQueries.getStudentCourses(studentID);
 
 			foreach (var item in items)
 			{

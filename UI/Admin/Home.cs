@@ -14,9 +14,12 @@ namespace DatabaseSystemsProject.UI.Admin
 {
 	public partial class Home : Form
 	{
-		public Home()
+		long adminID;
+		public Home(long adminID)
 		{
 			InitializeComponent();
+			this.adminID = adminID;
+			
 		}
 
 		private void Home_Load(object sender, EventArgs e)
@@ -36,12 +39,12 @@ namespace DatabaseSystemsProject.UI.Admin
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			new AddOrganization().ShowDialog();
+			new AddOrganization(adminID).ShowDialog();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			new AddInstructor().ShowDialog();
+			new AddInstructor(adminID).ShowDialog();
 		}
 
         private void addAdmin_Click(object sender, EventArgs e)

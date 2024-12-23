@@ -1,5 +1,7 @@
 ﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.UI.Admin;
 using DatabaseSystemsProject.UI.Auth;
+using DatabaseSystemsProject.UI.Instructor;
 using DatabaseSystemsProject.UI.Student;
 using DatabaseSystemsProject.Utility;
 using System;
@@ -29,15 +31,30 @@ namespace DatabaseSystemsProject
 
 		private void loginBTN_Click(object sender, EventArgs e)
 		{
-			long studentID = StudentQueries.loginStudent(emailTB.Text, passTB.Text);
-			if(studentID <= -1)
+			int type = LoginQueries.type(emailTB.Text);
+
+			long id = LoginQueries.authenticate(type, emailTB.Text, passTB.Text);
+			if (id == -1)
 			{
-				MessageBox.Show("Failed login");
+				MessageBox.Show("Login failed.");
+				return;
 			}
-			else
+
+			switch (type)
 			{
-				new HomeScreen().Show();
-			}
+				case 1:
+					new HomeScreen(id).ShowDialog();
+					break;
+				case 2:
+					new Home(id).ShowDialog();
+					break;
+				case 3:
+					new InstructorScreen(id).ShowDialog();
+					break;
+				default:
+                    MessageBox.Show("Login failed.");
+					break;
+            }
 		}
 	}
 }

@@ -16,9 +16,11 @@ namespace DatabaseSystemsProject.UI.Admin
 {
 	public partial class AddInstructor : Form
 	{
-		public AddInstructor()
+        long adminID;
+		public AddInstructor(long adminID)
 		{
 			InitializeComponent();
+            this.adminID = adminID;
 			Organization defaultOrg = new Organization
 			{
 				ID = -1,
@@ -82,7 +84,7 @@ namespace DatabaseSystemsProject.UI.Admin
             String saltHex = PasswordEncryption.ByteArrayToHexString(salt);
             String hashHex = PasswordEncryption.ByteArrayToHexString(hash);
 
-            InstructorQueries.registerInstructor(name, email, dateTime, path, phoneNumber, hashHex, saltHex , orgID);
+            InstructorQueries.registerInstructor(name, email, dateTime, path, phoneNumber, hashHex, saltHex , orgID, adminID);
 
             Close();
         }
