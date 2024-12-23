@@ -107,6 +107,7 @@
     <Compile Include="DB\ModuleQueires.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
+    <Compile Include="DB\SubSectionsQueries.cs" />
     <Compile Include="Models\BankCard.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Organization.cs" />
@@ -362,11 +363,17 @@
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddAssign.resx">
       <DependentUpon>AddAssign.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddMCQ.resx">
+      <DependentUpon>AddMCQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddReading.resx">
       <DependentUpon>AddReading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddSAQ.resx">
       <DependentUpon>AddSAQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddTFQ.resx">
+      <DependentUpon>AddTFQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddVideo.resx">
       <DependentUpon>AddVideo.cs</DependentUpon>

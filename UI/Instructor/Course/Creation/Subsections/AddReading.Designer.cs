@@ -28,21 +28,21 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.contentTb = new System.Windows.Forms.RichTextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.titleTB = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// richTextBox1
+			// contentTb
 			// 
-			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.richTextBox1.Location = new System.Drawing.Point(106, 55);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(573, 361);
-			this.richTextBox1.TabIndex = 5;
-			this.richTextBox1.Text = "";
+			this.contentTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.contentTb.Location = new System.Drawing.Point(106, 55);
+			this.contentTb.Name = "contentTb";
+			this.contentTb.Size = new System.Drawing.Size(573, 361);
+			this.contentTb.TabIndex = 5;
+			this.contentTb.Text = "";
 			// 
 			// label1
 			// 
@@ -64,13 +64,13 @@
 			this.label2.TabIndex = 6;
 			this.label2.Text = "Title";
 			// 
-			// textBox1
+			// titleTB
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox1.Location = new System.Drawing.Point(106, 6);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(573, 32);
-			this.textBox1.TabIndex = 7;
+			this.titleTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.titleTB.Location = new System.Drawing.Point(106, 6);
+			this.titleTB.Name = "titleTB";
+			this.titleTB.Size = new System.Drawing.Size(573, 32);
+			this.titleTB.TabIndex = 7;
 			// 
 			// button1
 			// 
@@ -81,6 +81,7 @@
 			this.button1.TabIndex = 8;
 			this.button1.Text = "Submit";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// AddReading
 			// 
@@ -88,9 +89,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(702, 480);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.titleTB);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.contentTb);
 			this.Controls.Add(this.label1);
 			this.Name = "AddReading";
 			this.Text = "AddReading";
@@ -101,10 +102,10 @@
 
 		#endregion
 
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox contentTb;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox titleTB;
 		private System.Windows.Forms.Button button1;
 	}
 }

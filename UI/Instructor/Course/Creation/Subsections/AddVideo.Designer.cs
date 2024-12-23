@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.button1 = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.titleTB = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.videPathLBL = new System.Windows.Forms.Label();
 			this.button2 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
@@ -45,14 +45,15 @@
 			this.button1.TabIndex = 11;
 			this.button1.Text = "Select";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// textBox1
+			// titleTB
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox1.Location = new System.Drawing.Point(70, 12);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(573, 32);
-			this.textBox1.TabIndex = 10;
+			this.titleTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.titleTB.Location = new System.Drawing.Point(70, 12);
+			this.titleTB.Name = "titleTB";
+			this.titleTB.Size = new System.Drawing.Size(573, 32);
+			this.titleTB.TabIndex = 10;
 			// 
 			// label2
 			// 
@@ -74,15 +75,15 @@
 			this.label1.TabIndex = 12;
 			this.label1.Text = "Video";
 			// 
-			// label3
+			// videPathLBL
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.label3.Location = new System.Drawing.Point(236, 79);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(149, 26);
-			this.label3.TabIndex = 13;
-			this.label3.Text = "Path/To/Video";
+			this.videPathLBL.AutoSize = true;
+			this.videPathLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.videPathLBL.Location = new System.Drawing.Point(236, 79);
+			this.videPathLBL.Name = "videPathLBL";
+			this.videPathLBL.Size = new System.Drawing.Size(149, 26);
+			this.videPathLBL.TabIndex = 13;
+			this.videPathLBL.Text = "Path/To/Video";
 			// 
 			// button2
 			// 
@@ -93,6 +94,7 @@
 			this.button2.TabIndex = 14;
 			this.button2.Text = "Submit";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// AddVideo
 			// 
@@ -100,10 +102,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(668, 205);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.label3);
+			this.Controls.Add(this.videPathLBL);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.titleTB);
 			this.Controls.Add(this.label2);
 			this.Name = "AddVideo";
 			this.Text = "AddVideo";
@@ -115,10 +117,10 @@
 		#endregion
 
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox titleTB;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label videPathLBL;
 		private System.Windows.Forms.Button button2;
 	}
 }

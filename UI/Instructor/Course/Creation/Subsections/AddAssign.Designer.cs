@@ -29,11 +29,11 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.pormptTB = new System.Windows.Forms.RichTextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.maxGrade = new System.Windows.Forms.NumericUpDown();
 			this.button1 = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.maxGrade)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -46,14 +46,14 @@
 			this.label1.TabIndex = 2;
 			this.label1.Text = "Prompt";
 			// 
-			// richTextBox1
+			// pormptTB
 			// 
-			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-			this.richTextBox1.Location = new System.Drawing.Point(137, 9);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(537, 361);
-			this.richTextBox1.TabIndex = 3;
-			this.richTextBox1.Text = "";
+			this.pormptTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.pormptTB.Location = new System.Drawing.Point(137, 9);
+			this.pormptTB.Name = "pormptTB";
+			this.pormptTB.Size = new System.Drawing.Size(537, 361);
+			this.pormptTB.TabIndex = 3;
+			this.pormptTB.Text = "";
 			// 
 			// label2
 			// 
@@ -65,13 +65,13 @@
 			this.label2.TabIndex = 4;
 			this.label2.Text = "Max Grade";
 			// 
-			// numericUpDown1
+			// maxGrade
 			// 
-			this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.numericUpDown1.Location = new System.Drawing.Point(137, 387);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(120, 32);
-			this.numericUpDown1.TabIndex = 5;
+			this.maxGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.maxGrade.Location = new System.Drawing.Point(137, 387);
+			this.maxGrade.Name = "maxGrade";
+			this.maxGrade.Size = new System.Drawing.Size(120, 32);
+			this.maxGrade.TabIndex = 5;
 			// 
 			// button1
 			// 
@@ -82,6 +82,7 @@
 			this.button1.TabIndex = 6;
 			this.button1.Text = "Submit";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// AddAssign
 			// 
@@ -89,13 +90,13 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(694, 450);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.maxGrade);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.pormptTB);
 			this.Controls.Add(this.label1);
 			this.Name = "AddAssign";
 			this.Text = "AddAssign";
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.maxGrade)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -104,9 +105,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox pormptTB;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown maxGrade;
 		private System.Windows.Forms.Button button1;
 	}
 }
