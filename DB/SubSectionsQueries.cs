@@ -181,7 +181,7 @@ namespace DatabaseSystemsProject.DB
 
 		}
 
-		public static void createAssignemnt(long modID, long courseID, String prompt, byte maxGrade)
+		public static long createAssignemnt(long modID, long courseID, String prompt, byte maxGrade)
 		{
 			String query = "INSERT INTO QuestionAssignment(ModuleID, CourseID, Prompt, MaxGrade)" +
 							"VALUES(@ModuleID, @CourseID, @Prompt, @MaxGrade); ";
@@ -208,6 +208,7 @@ namespace DatabaseSystemsProject.DB
 						}
 
 						trans.Commit();
+						return id;
 
 					}
 				}
@@ -215,6 +216,7 @@ namespace DatabaseSystemsProject.DB
 				{
 
 					Console.WriteLine(ex.ToString());
+					return -1;
 				}
 			}
 

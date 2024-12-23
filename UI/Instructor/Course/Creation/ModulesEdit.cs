@@ -18,6 +18,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 		int mcqIndex = 1;
 		int saqIndex = 1;
 		int tfIndqx = 1;
+		int assignIndex = 1;
 
 		public ModulesEdit(long retrievedID)
 		{
@@ -127,7 +128,16 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 
 		private void button8_Click(object sender, EventArgs e)
 		{
-			new AddAssign().ShowDialog();
+			var node = getSelectedModule();
+			var saq = new AddAssign(courseId, (long)node.Tag);
+			saq.ShowDialog();
+			if (saq.asignID <= -1)
+			{
+				return;
+			}
+
+			var newNode = new TreeNode($"Assignment{assignIndex++}");
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 		}
 
 		private void courseTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)

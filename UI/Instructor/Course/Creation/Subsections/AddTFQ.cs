@@ -15,7 +15,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation.Subsections
 	{
 		long courseID;
 		long moduleID;
-		public long tfqID;
+		public long tfqID = -1;
 		public AddTFQ(long rcid,long rmid)
 		{
 			InitializeComponent();
