@@ -107,6 +107,7 @@
     <Compile Include="DB\ModuleQueires.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
+    <Compile Include="DB\SubSectionsQueries.cs" />
     <Compile Include="Models\BankCard.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Organization.cs" />

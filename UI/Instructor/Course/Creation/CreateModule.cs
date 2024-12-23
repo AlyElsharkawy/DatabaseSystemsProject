@@ -13,7 +13,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 {
 	public partial class CreateModule : Form
 	{
-		public long moduleID;
+		public long moduleID = -1;
 		long courseID;
 		public String moduleName;
 		public CreateModule(long retrievedID)

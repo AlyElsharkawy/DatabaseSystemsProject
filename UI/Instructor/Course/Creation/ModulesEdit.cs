@@ -1,4 +1,5 @@
 ﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.UI.Instructor.Course.Creation.Subsections;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,25 +20,90 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 		{
 			InitializeComponent();
 			courseId = retrievedID;
+			TreeNode newModule = new TreeNode("text processing");
+			newModule.Tag = (long)104;
+			courseTV.Nodes.Add(newModule);
 		}
 
 		private void addModBTN_Click(object sender, EventArgs e)
 		{
 			var createMod = new CreateModule(courseId);
 			createMod.ShowDialog();
-			
+			if(createMod.moduleID == -1)
+			{
+				return;
+			}
+
 			TreeNode newModule = new TreeNode(createMod.moduleName);
 			newModule.Tag = createMod.moduleID;
 			courseTV.Nodes.Add(newModule);	
 			
 		}
 
+		private  TreeNode getSelectedModule()
+		{
+			 return courseTV.SelectedNode;
+		}
+
 		private void rmModBTN_Click(object sender, EventArgs e)
 		{
-			TreeNode selectedNode = courseTV.SelectedNode;
-			long id = (long)selectedNode.Tag;
-			ModuleQueires.deleteModule(id);
+			var selectedNode = getSelectedModule();
+			ModuleQueires.deleteModule((long)selectedNode.Tag);
 			courseTV.Nodes.Remove(selectedNode);
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			var node = getSelectedModule();
+			var video = new AddVideo(courseId, (long)node.Tag);
+			video.ShowDialog();
+			var newNode = new TreeNode(video.videoTitle);
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
+
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			var node = getSelectedModule();
+			var reading = new AddReading(courseId, (long)node.Tag);
+			reading.ShowDialog();
+			if (String.IsNullOrEmpty(reading.readingTitle))
+			{
+				return;
+			}
+
+			var newNode = new TreeNode(reading.readingTitle);
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			new AddSAQ().ShowDialog();
+		}
+
+		private void button6_Click(object sender, EventArgs e)
+		{
+			new AddMCQ().ShowDialog();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			new AddTFQ().ShowDialog();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			new AddAssign().ShowDialog();
+		}
+
+		private void courseTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+		{
+
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }
