@@ -108,11 +108,18 @@
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
     <Compile Include="DB\SubSectionsQueries.cs" />
+    <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\BankCard.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\mcq.cs" />
+    <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\Reading.cs" />
+    <Compile Include="Models\SAQ.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCertificate.cs" />
+    <Compile Include="Models\TFQ.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="UI\Admin\AddAdmin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -2,7 +2,6 @@
 using DatabaseSystemsProject.UI.Admin.Courses;
 using DatabaseSystemsProject.UI.Admin.Courses.CourseStuList;
 using DatabaseSystemsProject.UI.Auth;
-using DatabaseSystemsProject.UI.Student;
 using DatabaseSystemsProject.UI.Instructor.Course.Creation;
 using DatabaseSystemsProject.UI.Instructor.ManageStudent;
 using DatabaseSystemsProject.UI.Student.Courses;
@@ -13,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DatabaseSystemsProject.UI.Student;
 
 namespace DatabaseSystemsProject
 {

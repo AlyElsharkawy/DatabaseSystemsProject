@@ -88,7 +88,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 				};
 
 
-				enterBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				enterBTN.Click += (sender, e) => { new ModulesView(item).ShowDialog(); };
 				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, 23).ShowDialog(); };
 				certificateBTN.Click += (sender, e) => { new Certificate(23, item.Id).Show(); };
 

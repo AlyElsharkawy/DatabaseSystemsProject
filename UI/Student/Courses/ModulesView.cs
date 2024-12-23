@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,28 +15,82 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 {
 	public partial class ModulesView : Form
 	{
-		public ModulesView()
+		Course selectedCourse;
+		public ModulesView(Course recievedCourse)
 		{
 			InitializeComponent();
-			modulesDummyData();
+
+			selectedCourse = recievedCourse;
+			loadModules();
 		}
 
-		private void modulesDummyData()
-		{
-			for (int i = 1; i <= 5; i++)
-			{
-				// Create a module node
-				TreeNode moduleNode = new TreeNode($"Module {i}");
+		int mcqIndex = 1;
+		int assignIndex = 1;
+		int saqIndex = 1;
+		int tfIndex = 1;
 
-				// Add 5 items to each module
-				for (int j = 1; j <= 5; j++)
-				{
-					moduleNode.Nodes.Add(new TreeNode($"Item {i}.{j}"));
+		private void loadModules()
+		{
+			var modules = ModuleQueires.getCourseModules(selectedCourse.Id);
+			foreach (var module in modules) {
+				var enteredNode = modulesTV.Nodes.Add(module.moduleTitle);
+				
+
+				var videos = ModuleQueires.getModuleVideos(module.moduleID);
+				foreach (var video in videos) {
+					var videoNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add(video.title);
+					videoNode.Tag = video;
 				}
 
-				// Add the module node to the TreeView
-				modulesTV.Nodes.Add(moduleNode);
+
+
+				var mcqs = ModuleQueires.getModuleMCQs(module.moduleID);
+				foreach (var mcq in mcqs)
+				{
+					var node = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"MCQ{mcqIndex++}");
+					node.Tag = mcq;
+				}
+
+				var assignments = ModuleQueires.getModuleAssignments(module.moduleID);
+				foreach (var assignment in assignments)
+				{
+					var assignmentNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"Assignment{assignIndex++}");
+					assignmentNode.Tag = assignment;
+				}
+
+				var saqs = ModuleQueires.getModuleSAQs(module.moduleID);
+				foreach (var saq in saqs)
+				{
+					var saqNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"Short Question{saqIndex++}");
+					saqNode.Tag = saq;
+				}
+
+				var readings = ModuleQueires.getModuleReadings(module.moduleID);
+				foreach (var reading in readings)
+				{
+					var readingNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add(reading.Title);
+					readingNode.Tag = reading;
+				}
+
+				var tfquestions = ModuleQueires.getModuleTFQs(module.moduleID);
+				foreach (var tf in tfquestions)
+				{
+					var tfNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"True/False{tfIndex++}");
+					tfNode.Tag = tf;
+				}
 			}
+		}
+
+		private void selectBTN_Click(object sender, EventArgs e)
+		{
+			if(modulesTV.SelectedNode == null)
+			{
+				return;
+			}
+
+			var selectedNode = modulesTV.SelectedNode;
+
+
 		}
 	}
 }

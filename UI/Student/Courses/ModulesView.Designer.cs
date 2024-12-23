@@ -48,6 +48,7 @@
 			this.selectBTN.TabIndex = 1;
 			this.selectBTN.Text = "Select";
 			this.selectBTN.UseVisualStyleBackColor = true;
+			this.selectBTN.Click += new System.EventHandler(this.selectBTN_Click);
 			// 
 			// moduleFLP
 			// 
