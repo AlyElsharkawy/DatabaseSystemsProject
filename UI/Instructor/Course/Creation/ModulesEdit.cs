@@ -24,9 +24,6 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 		{
 			InitializeComponent();
 			courseId = retrievedID;
-			TreeNode newModule = new TreeNode("text processing");
-			newModule.Tag = (long)104;
-			courseTV.Nodes.Add(newModule);
 		}
 
 		private void addModBTN_Click(object sender, EventArgs e)

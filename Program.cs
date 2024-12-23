@@ -26,7 +26,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new ModulesEdit(3));
+			Application.Run(new HomeScreen());
 		}
 	}
 }
