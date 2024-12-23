@@ -279,7 +279,7 @@ namespace DatabaseSystemsProject.DB
 					connection.Open();
 
 					string query = "INSERT INTO SolvedQuestionMultipleChoice (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -308,7 +308,7 @@ namespace DatabaseSystemsProject.DB
 					connection.Open();
 
 					string query = "INSERT INTO SolvedShortAnswerQuestion (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -337,7 +337,7 @@ namespace DatabaseSystemsProject.DB
 					connection.Open();
 
 					string query = "INSERT INTO SolvedAssignment (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -366,7 +366,7 @@ namespace DatabaseSystemsProject.DB
 					connection.Open();
 
 					string query = "INSERT INTO SolvedQuestionTrueFalse (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer";
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -394,8 +394,8 @@ namespace DatabaseSystemsProject.DB
 				{
 					connection.Open();
 
-					string query = "INSERT INTO SolvedQuestionVideo (ID, ModuleID, CourseID, StudentID, IsDone) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @IsDone";
+					string query = "INSERT INTO SolvedQuestionVideo (ID, ModuleID, CourseID, StudentID) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -422,8 +422,8 @@ namespace DatabaseSystemsProject.DB
 				{
 					connection.Open();
 
-					string query = "INSERT INTO SolvedQuestionReading (ID, ModuleID, CourseID, StudentID, IsDone) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @IsDone";
+					string query = "INSERT INTO SolvedQuestionReading (ID, ModuleID, CourseID, StudentID) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID )";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -431,7 +431,6 @@ namespace DatabaseSystemsProject.DB
 						command.Parameters.AddWithValue("@ModuleID", reading.ModuleID);
 						command.Parameters.AddWithValue("@CourseID", reading.CourseID);
 						command.Parameters.AddWithValue("@StudentID", studentID);
-						command.Parameters.AddWithValue("@IsDone", 1);
 
 						command.ExecuteNonQuery();
 					}
@@ -442,6 +441,28 @@ namespace DatabaseSystemsProject.DB
 				}
 			}
 
+		}
+
+
+
+		private bool mcqSolved(long studentId, long moduleId, long courseId, long questionId)
+		{
+			string query = "SELECT COUNT(*) FROM SolvedQuestionMultipleChoice WHERE StudentID = @studentId AND ModuleID = @moduleId AND CourseID = @courseId AND ID = @questionId";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+				using (var command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@studentId", studentId);
+					command.Parameters.AddWithValue("@moduleId", moduleId);
+					command.Parameters.AddWithValue("@courseId", courseId);
+					command.Parameters.AddWithValue("@questionId", questionId);
+
+					var result = command.ExecuteScalar();
+					return Convert.ToInt32(result) > 0; 
+				}
+			}
 		}
 	}
 }

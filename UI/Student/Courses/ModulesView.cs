@@ -196,7 +196,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			{
 				Text = mcq.QuestionOne,
 				Size = new Size(200,30),
-				Tag = 1
+				Tag = (byte)1
 				
 			};
 
@@ -204,21 +204,21 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			{
 				Text = mcq.QuestionTwo,
 				Size = new Size(200, 30),
-				Tag = 2
+				Tag = (byte)2
 			};
 
 			RadioButton option3 = new RadioButton()
 			{
 				Text = mcq.QuestionThree,
 				Size = new Size(200, 30),
-				Tag = 3
+				Tag = (byte)3
 			};
 
 			RadioButton option4 = new RadioButton()
 			{
 				Text = mcq.QuestionFour,
 				Size = new Size(200, 30),
-				Tag = 4
+				Tag = (byte)4
 			};
 
 			optionsPanel.Controls.Add(option1);
