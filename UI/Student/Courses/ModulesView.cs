@@ -89,7 +89,67 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			}
 
 			var selectedNode = modulesTV.SelectedNode;
+			var selectedTag = selectedNode.Tag;
+			if (selectedTag == null)
+			{
+				return;
+			}
 
+			switch (selectedTag)
+			{
+				case Video video:
+					loadVideo(video);
+					break;
+				case mcq mcq:
+					loadMcq(mcq);
+					break;
+				case Assignment assignment:
+					loadAssignment(assignment);
+					break;
+				case SAQ saq:
+					loadSaq(saq);
+					break;
+				case Reading reading:
+					loadReading(reading);
+					break;
+				case TFQ tfq:
+					loadTfq(tfq);
+					break;
+				default:
+					MessageBox.Show("Unknown type selected.");
+					break;
+			}
+
+
+		}
+
+		private void loadVideo(Video video)
+		{
+
+		}
+
+		private void loadMcq(mcq mcq)
+		{
+
+		}
+
+		private void loadAssignment(Assignment assignment)
+		{
+
+		}
+
+		private void loadReading(Reading reading)
+		{
+
+		}
+
+		private void loadSaq(SAQ saq)
+		{
+
+		}
+
+		private void loadTfq(TFQ tf)
+		{
 
 		}
 	}
