@@ -54,7 +54,7 @@
 			// 
 			this.moduleFLP.Location = new System.Drawing.Point(12, 12);
 			this.moduleFLP.Name = "moduleFLP";
-			this.moduleFLP.Size = new System.Drawing.Size(587, 385);
+			this.moduleFLP.Size = new System.Drawing.Size(600, 385);
 			this.moduleFLP.TabIndex = 2;
 			// 
 			// ModulesView
