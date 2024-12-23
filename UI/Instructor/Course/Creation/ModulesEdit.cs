@@ -17,6 +17,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 		long courseId;
 		int mcqIndex = 1;
 		int saqIndex = 1;
+		int tfIndqx = 1;
 
 		public ModulesEdit(long retrievedID)
 		{
@@ -112,7 +113,16 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 
 		private void button7_Click(object sender, EventArgs e)
 		{
-			new AddTFQ().ShowDialog();
+			var node = getSelectedModule();
+			var tfq = new AddTFQ(courseId, (long)node.Tag);
+			tfq.ShowDialog();
+			if (tfq.tfqID <= -1)
+			{
+				return;
+			}
+
+			var newNode = new TreeNode($"TFQuestion{tfIndqx++}");
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 		}
 
 		private void button8_Click(object sender, EventArgs e)

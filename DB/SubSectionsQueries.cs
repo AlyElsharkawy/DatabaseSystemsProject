@@ -221,7 +221,7 @@ namespace DatabaseSystemsProject.DB
 
 		}
 
-		public static void createTFQ(long modID, long courseID, String prompt, byte maxGrade, byte correctAnswerIndex)
+		public static long createTFQ(long modID, long courseID, String prompt, byte maxGrade, byte correctAnswerIndex)
 		{
 			String query = "INSERT INTO QuestionTrueFalse(ModuleID, CourseID, Prompt, MaxGrade, CorrectAnswer)"+
 							"VALUES(@ModuleID, @CourseID, @Prompt, @MaxGrade, @CorrectAnswer); ";
@@ -250,12 +250,15 @@ namespace DatabaseSystemsProject.DB
 
 						trans.Commit();
 
+						return id;
+
 					}
 				}
 				catch (Exception ex)
 				{
 
 					Console.WriteLine(ex.ToString());
+					return -1;
 				}
 			}
 
