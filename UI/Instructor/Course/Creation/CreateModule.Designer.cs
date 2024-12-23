@@ -28,18 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.modNameTB = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// modNameTB
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.textBox1.Location = new System.Drawing.Point(166, 6);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(288, 32);
-			this.textBox1.TabIndex = 0;
+			this.modNameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.modNameTB.Location = new System.Drawing.Point(166, 6);
+			this.modNameTB.Name = "modNameTB";
+			this.modNameTB.Size = new System.Drawing.Size(288, 32);
+			this.modNameTB.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -60,6 +60,7 @@
 			this.button1.TabIndex = 2;
 			this.button1.Text = "Submit";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// CreateModule
 			// 
@@ -68,7 +69,7 @@
 			this.ClientSize = new System.Drawing.Size(471, 118);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.modNameTB);
 			this.Name = "CreateModule";
 			this.Text = "CreateModule";
 			this.ResumeLayout(false);
@@ -78,7 +79,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox modNameTB;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button1;
 	}
