@@ -135,7 +135,7 @@ namespace DatabaseSystemsProject.DB
 
 		}
 
-		public static void createMCQ(long modID, long courseID, String prompt, byte maxGrade,byte correctAnswerIndex,String q1,String q2,String q3,String q4)
+		public static long createMCQ(long modID, long courseID, String prompt, byte maxGrade,byte correctAnswerIndex,String q1,String q2,String q3,String q4)
 		{
 			String query = "INSERT INTO QuestionMultipleChoice(CourseID, ModuleID, MaxGrade, Prompt, CorrectAnswer, QuestionOne, QuestionTwo, QuestionThree, QuestionFour)" +
 							"VALUES(@CourseID, @ModuleID, @MaxGrade, @Prompt, @CorrectAnswer, @QuestionOne, @QuestionTwo, @QuestionThree, @QuestionFour); ";
@@ -167,13 +167,14 @@ namespace DatabaseSystemsProject.DB
 						}
 
 						trans.Commit();
-
+						return id;
 					}
 				}
 				catch (Exception ex)
 				{
 
 					Console.WriteLine(ex.ToString());
+					return -1;
 				}
 			}
 

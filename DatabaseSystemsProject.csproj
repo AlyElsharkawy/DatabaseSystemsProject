@@ -359,6 +359,9 @@
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddAssign.resx">
       <DependentUpon>AddAssign.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddMCQ.resx">
+      <DependentUpon>AddMCQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddReading.resx">
       <DependentUpon>AddReading.cs</DependentUpon>
     </EmbeddedResource>

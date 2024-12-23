@@ -16,5 +16,10 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation.Subsections
 		{
 			InitializeComponent();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

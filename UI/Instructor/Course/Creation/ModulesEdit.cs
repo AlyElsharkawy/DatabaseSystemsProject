@@ -15,6 +15,8 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 	public partial class ModulesEdit : Form
 	{
 		long courseId;
+		int mcqIndex = 1;
+		int saqIndex = 1;
 
 		public ModulesEdit(long retrievedID)
 		{
@@ -90,13 +92,22 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 				return;
 			}
 
-			var newNode = new TreeNode("Short Question");
+			var newNode = new TreeNode($"Short Question{saqIndex++}");
 			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 		}
 
 		private void button6_Click(object sender, EventArgs e)
 		{
-			new AddMCQ().ShowDialog();
+			var node = getSelectedModule();
+			var mcq = new AddMCQ(courseId, (long)node.Tag);
+			mcq.ShowDialog();
+			if (mcq.mcqID <= -1)
+			{
+				return;
+			}
+
+			var newNode = new TreeNode($"mcqQuestion{mcqIndex++}");
+			courseTV.Nodes[node.Index].Nodes.Add(newNode);
 		}
 
 		private void button7_Click(object sender, EventArgs e)
