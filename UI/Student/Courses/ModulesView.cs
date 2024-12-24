@@ -551,9 +551,12 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			}
 
 
-			
+
 
 			//query to add to database
+			ModuleQueires.completeModule(moduleID, studentID, courseID);
+
+
 
 
 		}

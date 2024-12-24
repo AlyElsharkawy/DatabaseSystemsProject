@@ -403,5 +403,26 @@ namespace DatabaseSystemsProject.DB
 			}
 		}
 
+
+		public static void completeModule(long moduleID, long studentID, long courseID, decimal grade = 10)
+		{
+			string query = "INSERT INTO StudentCompletedModules (ID, StudentID, CourseID, Grade) " +
+				   "VALUES (@ID, @StudentID, @CourseID, @Grade)";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				using (var command = new MySqlCommand(query, connection))
+				{
+					connection.Open();
+					command.Parameters.AddWithValue("@ID", moduleID);
+					command.Parameters.AddWithValue("@StudentID", studentID);
+					command.Parameters.AddWithValue("@CourseID", courseID);
+					command.Parameters.AddWithValue("@Grade", grade);
+
+					command.ExecuteNonQuery();
+				}
+			}
+		}
+
 	}
 }
