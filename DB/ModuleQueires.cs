@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -317,6 +318,88 @@ namespace DatabaseSystemsProject.DB
 				}
 
 				return mcqs;
+			}
+		}
+
+
+		public static bool isModulesMcqAnswered(long moduleID,long mcqID)
+		{
+			string query = @"
+        SELECT EXISTS(
+            SELECT 1
+            FROM SolvedQuestionMultipleChoice
+            WHERE ModuleID = @ModuleID AND ID = @ID
+        ) AS RecordExists;";
+
+			using (SqlConnection connection = new SqlConnection(dbSecret.connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			{
+				command.Parameters.AddWithValue("@ModuleID", moduleID);
+				command.Parameters.AddWithValue("@ID", mcqID);
+
+				connection.Open();
+				return Convert.ToBoolean(command.ExecuteScalar());
+			}
+		}
+
+		public static bool isModulesTfAnswered(long moduleID, long tfID)
+		{
+			string query = @"
+        SELECT EXISTS(
+            SELECT 1
+            FROM SolvedQuestionTrueFalse
+            WHERE ModuleID = @ModuleID AND ID = @ID
+        ) AS RecordExists;";
+
+			using (SqlConnection connection = new SqlConnection(dbSecret.connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			{
+				command.Parameters.AddWithValue("@ModuleID", moduleID);
+				command.Parameters.AddWithValue("@ID", tfID);
+
+				connection.Open();
+				return Convert.ToBoolean(command.ExecuteScalar());
+			}
+		}
+
+		public static bool isModulesAssignAnswered(long moduleID, long mcqID)
+		{
+			string query = @"
+        SELECT EXISTS(
+            SELECT 1
+            FROM SolvedAssignment
+            WHERE ModuleID = @ModuleID AND ID = @ID
+        ) AS RecordExists;";
+
+			using (SqlConnection connection = new SqlConnection(dbSecret.connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			{
+				command.Parameters.AddWithValue("@ModuleID", moduleID);
+				command.Parameters.AddWithValue("@ID", mcqID);
+
+				connection.Open();
+				return Convert.ToBoolean(command.ExecuteScalar());
+			}
+		}
+
+
+		public static bool isModulesSAQAnswered(long moduleID, long mcqID)
+		{
+			string query = @"
+        SELECT EXISTS(
+            SELECT 1
+            FROM SolvedShortAnswerQuestion
+            WHERE ModuleID = @ModuleID AND ID = @ID
+        ) AS RecordExists;";
+
+			using (SqlConnection connection = new SqlConnection(dbSecret.connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			{
+				command.Parameters.AddWithValue("@ModuleID", moduleID);
+				command.Parameters.AddWithValue("@ID", mcqID);
+
+				connection.Open();
+				return Convert.ToBoolean(command.ExecuteScalar());
 			}
 		}
 

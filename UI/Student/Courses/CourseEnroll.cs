@@ -16,9 +16,11 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 	public partial class CourseEnroll : Form
 	{
 		Course selectedCoruse;
-		public CourseEnroll(Course recieved)
+		long studentID;
+		public CourseEnroll(Course recieved,long rStudentId)
 		{
 			selectedCoruse = recieved;
+			studentID = rStudentId;
 			InitializeComponent();
 			String placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
 			nameLBL.Text = selectedCoruse.Name;
@@ -30,7 +32,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		private void enrollBTN_Click(object sender, EventArgs e)
 		{
-			var pay = new CoursePay(selectedCoruse);
+			var pay = new CoursePay(selectedCoruse,studentID);
 			pay.ShowDialog();
 			if (pay.closePrev)
 			{

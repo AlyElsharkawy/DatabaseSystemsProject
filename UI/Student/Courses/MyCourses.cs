@@ -95,9 +95,9 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 				};
 
 
-				enterBTN.Click += (sender, e) => { new ModulesView(item, 23).ShowDialog(); };
-				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, 23).ShowDialog(); };
-				certificateBTN.Click += (sender, e) => { new Certificate(23, item.Id).Show(); };
+				enterBTN.Click += (sender, e) => { new ModulesView(item, studentID).ShowDialog(); };
+				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); };
+				certificateBTN.Click += (sender, e) => { new Certificate(studentID, item.Id).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

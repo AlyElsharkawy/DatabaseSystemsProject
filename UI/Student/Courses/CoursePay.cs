@@ -18,12 +18,14 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 		BankCard usedBankCard = null;
 		Course selectedCourse;
 		public bool closePrev = false;
-		public CoursePay(Course receivedCourse)
+		long studentID;
+		public CoursePay(Course receivedCourse,long rStudentID)
 		{
 			InitializeComponent();
 			selectedCourse = receivedCourse;
 			nameLBL.Text = selectedCourse.Name;
 			priceLBL.Text = "Price: " + selectedCourse.price.ToString() + "$";
+			studentID = rStudentID;
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -46,8 +48,8 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 		private void confirmPurcBTN_Click(object sender, EventArgs e)
 		{
 			confirmPurcBTN.Enabled = false;
-			InvoiceQueries.createInvoice(1, selectedCourse.Id, usedBankCard.ID, selectedCourse.price);
-			CourseQueries.enrollStudent(1, selectedCourse.Id);
+			InvoiceQueries.createInvoice(studentID, selectedCourse.Id, usedBankCard.ID, selectedCourse.price);
+			CourseQueries.enrollStudent(studentID, selectedCourse.Id);
 			closePrev = true;
 			Close();
 		}

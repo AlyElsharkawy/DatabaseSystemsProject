@@ -73,7 +73,7 @@ namespace DatabaseSystemsProject.UI.Student
 				};
 
 
-				courseBTN.Click += (sender, e) => { new CourseEnroll(item).ShowDialog();
+				courseBTN.Click += (sender, e) => { new CourseEnroll(item, studentID).ShowDialog();
 
 					CoursesFLP.Controls.Clear();
 					loadCourses();

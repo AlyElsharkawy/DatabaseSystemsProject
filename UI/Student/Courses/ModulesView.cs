@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,14 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 	{
 		Course selectedCourse;
 		long studentID;
+
+		Dictionary<long, List<long>> ModulesMCQs = new Dictionary<long, List<long>>();
+		Dictionary<long, List<long>> ModulesAssigns = new Dictionary<long, List<long>>();
+		Dictionary<long, List<long>> ModulesSAQs = new Dictionary<long, List<long>>();
+		Dictionary<long, List<long>> ModulesTFQs = new Dictionary<long, List<long>>();
+
+
+
 		public ModulesView(Course recievedCourse,long rStudentID)
 		{
 			InitializeComponent();
@@ -54,6 +63,12 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					var node = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"MCQ{mcqIndex++}");
 					node.Tag = mcq;
+					if (!ModulesMCQs.ContainsKey(module.moduleID))
+					{
+						ModulesMCQs[module.moduleID] = new List<long>();
+					}
+					ModulesMCQs[module.moduleID].Add(mcq.ID);
+
 				}
 
 				var assignments = ModuleQueires.getModuleAssignments(module.moduleID);
@@ -61,6 +76,12 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					var assignmentNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"Assignment{assignIndex++}");
 					assignmentNode.Tag = assignment;
+
+					if (!ModulesAssigns.ContainsKey(module.moduleID))
+					{
+						ModulesAssigns[module.moduleID] = new List<long>();
+					}
+					ModulesAssigns[module.moduleID].Add(assignment.ID);
 				}
 
 				var saqs = ModuleQueires.getModuleSAQs(module.moduleID);
@@ -68,6 +89,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					var saqNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"Short Question{saqIndex++}");
 					saqNode.Tag = saq;
+
+					if (!ModulesSAQs.ContainsKey(module.moduleID))
+					{
+						ModulesSAQs[module.moduleID] = new List<long>();
+					}
+					ModulesSAQs[module.moduleID].Add(saq.ID);
+
 				}
 
 				var readings = ModuleQueires.getModuleReadings(module.moduleID);
@@ -82,6 +110,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					var tfNode = modulesTV.Nodes[enteredNode.Index].Nodes.Add($"True/False{tfIndex++}");
 					tfNode.Tag = tf;
+
+					if (!ModulesTFQs.ContainsKey(module.moduleID))
+					{
+						ModulesTFQs[module.moduleID] = new List<long>();
+					}
+					ModulesTFQs[module.moduleID].Add(tf.ID);
+
 				}
 			}
 		}
@@ -460,5 +495,59 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 		}
 
 		
+
+		private bool isModuleCompleted(long moduleID,long courseID)
+		{
+			if (ModulesMCQs.TryGetValue(moduleID, out List<long> mcqIds))
+			{
+				foreach (var mcqId in mcqIds)
+				{
+					if(!SubSectionsQueries.isMcqSolved(studentID, moduleID, selectedCourse.Id, mcqId))
+					{
+						return false;
+					}
+				}
+			}
+
+			if (ModulesAssigns.TryGetValue(moduleID, out List<long> assignIds))
+			{
+				foreach (var mcqId in assignIds)
+				{
+					if (!SubSectionsQueries.isAssignSolved(studentID, moduleID, selectedCourse.Id, mcqId))
+					{
+						return false;
+					}
+				}
+			}
+
+			if (ModulesSAQs.TryGetValue(moduleID, out List<long> saqIds))
+			{
+				foreach (var mcqId in saqIds)
+				{
+					if (!SubSectionsQueries.isSAQSolved(studentID, moduleID, selectedCourse.Id, mcqId))
+					{
+						return false;
+					}
+				}
+			}
+
+			if (ModulesTFQs.TryGetValue(moduleID, out List<long> tfIds))
+			{
+				foreach (var mcqId in tfIds)
+				{
+					if (!SubSectionsQueries.isTFSolved(studentID, moduleID, selectedCourse.Id, mcqId))
+					{
+						return false;
+					}
+				}
+			}
+
+
+			
+
+			return true;
+
+
+		}
 	}
 }
