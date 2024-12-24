@@ -324,7 +324,7 @@ namespace DatabaseSystemsProject.DB
 		}
 
 
-		public static bool isModulesMcqAnswered(long moduleID,long mcqID)
+		public static bool isModulesMcqAnswered(long moduleID, long mcqID)
 		{
 			string query = @"
         SELECT EXISTS(
@@ -426,14 +426,34 @@ namespace DatabaseSystemsProject.DB
 			}
 		}
 
-		public static bool isModuleCompleted(long moduleID,long studentID,long courseID) {
+		public static bool isModuleCompleted(long moduleID, long studentID, long courseID)
+		{
 			string query = @"
         SELECT COUNT(*) 
         FROM StudentCompletedModules 
         WHERE StudentID = @StudentID 
           AND CourseID = @CourseID 
           AND ID = @ModuleID;";
-		public static byte getQuestionMaxGrade(long questionId)
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+
+				using (var command = new MySqlCommand(query, connection))
+				{
+					connection.Open();
+					command.Parameters.AddWithValue("@StudentID", studentID);
+					command.Parameters.AddWithValue("@CourseID", courseID);
+					command.Parameters.AddWithValue("@ModuleID", moduleID);
+
+					var result = Convert.ToInt32(command.ExecuteScalar());
+
+					return result > 0;
+				}
+			}
+		}
+	
+		
+
+			public static byte getQuestionMaxGrade(long questionId)
 		{
 			String query = "SELECT MaxGrade FROM QuestionShortAnswer WHERE ID = @questionId";
 			byte mx = 0;
@@ -466,20 +486,6 @@ namespace DatabaseSystemsProject.DB
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
 				connection.Open();
-
-				using (var command = new MySqlCommand(query, connection))
-				{
-					command.Parameters.AddWithValue("@StudentID", studentID);
-					command.Parameters.AddWithValue("@CourseID", courseID);
-					command.Parameters.AddWithValue("@ModuleID", moduleID);
-
-					var result = Convert.ToInt32(command.ExecuteScalar());
-
-					return result > 0; 
-				}
-			}
-		}
-	}
 				try
 				{
 					using (var trans = connection.BeginTransaction())
@@ -502,10 +508,10 @@ namespace DatabaseSystemsProject.DB
 				{
 					Console.WriteLine(ex.ToString());
 				}
-
-
 			}
 		}
+
+		
 
         public static byte getQuestionMaxGradeAssignment(long questionId)
         {
