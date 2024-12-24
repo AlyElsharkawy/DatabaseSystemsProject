@@ -72,6 +72,11 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 					
 				};
 
+				if (CourseQueries.hastWrittenReview(item.Id, studentID))
+				{
+					reviewBTN.Enabled = false;
+				}
+
 				Button certificateBTN = new Button
 				{
 					Text = "View Certificate",

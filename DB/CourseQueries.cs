@@ -301,5 +301,23 @@ namespace DatabaseSystemsProject.DB
 
 			return reviews;
 		}
+
+		public static bool hastWrittenReview(long courseID,long studentID)
+		{
+			String query = "SELECT COUNT(*) FROM CourseReviews WHERE CourseID = @courseID AND StudentID = @studentID";
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@courseID", courseID);
+					cmm.Parameters.AddWithValue("@studentID", studentID);
+					var result = cmm.ExecuteScalar();
+					return Convert.ToInt32(result) > 0;
+				}
+
+			}
+
+		}
 	}
 }
