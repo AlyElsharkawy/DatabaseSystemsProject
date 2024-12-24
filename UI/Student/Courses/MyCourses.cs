@@ -102,8 +102,8 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 				};
 
 
-				enterBTN.Click += (sender, e) => { new ModulesView(item, studentID).ShowDialog(); coursePanel.Controls.Clear(); loadDummyData(); };
-				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); coursePanel.Controls.Clear(); loadDummyData(); };
+				enterBTN.Click += (sender, e) => { new ModulesView(item, studentID).ShowDialog(); CoursesFLP.Controls.Clear(); loadDummyData(); };
+				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); CoursesFLP.Controls.Clear(); loadDummyData(); };
 				certificateBTN.Click += (sender, e) => { new Certificate(studentID, item.Id).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
