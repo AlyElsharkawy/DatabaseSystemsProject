@@ -60,6 +60,7 @@
 			// 
 			this.priceTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
 			this.priceTB.Location = new System.Drawing.Point(181, 96);
+			this.priceTB.MaxLength = 5;
 			this.priceTB.Name = "priceTB";
 			this.priceTB.Size = new System.Drawing.Size(150, 29);
 			this.priceTB.TabIndex = 2;

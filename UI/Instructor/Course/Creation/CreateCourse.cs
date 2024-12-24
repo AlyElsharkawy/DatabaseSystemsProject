@@ -59,6 +59,7 @@ namespace DatabaseSystemsProject.UI.Instructor.Course.Creation
 			{
 				decimal price = decimal.Parse(priceTB.Text);
 				currentID = CourseQueries.CreateCourse(name, price, path, desc, instructorID);
+				CourseQueries.createCourseCertification(currentID,"path/to/certificate",name);
 			}
 			catch
 			{

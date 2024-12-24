@@ -62,6 +62,7 @@ namespace DatabaseSystemsProject.DB
 				}
 				catch (Exception ex) {
 
+					Console.WriteLine(ex.Message);
 					return -1;
 				}
 			}
@@ -377,6 +378,32 @@ namespace DatabaseSystemsProject.DB
 			}
 
 			return certificateExists;
+		}
+
+		public static void createCourseCertification(long courseID, String templatePATH, String name)
+		{
+			string query = "INSERT INTO CourseCertificate (CourseID, TemplateFilePath, Name) VALUES (@CourseID, @TemplateFilePath, @Name)";
+
+			using (MySqlConnection connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using (MySqlCommand command = new MySqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@CourseID", courseID);
+						command.Parameters.AddWithValue("@TemplateFilePath", templatePATH);
+						command.Parameters.AddWithValue("@Name", name);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
 		}
 	}
 }
