@@ -116,6 +116,7 @@
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Reading.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\SAQ.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCertificate.cs" />

@@ -92,6 +92,7 @@
 			// 
 			// reviewsFLP
 			// 
+			this.reviewsFLP.AutoScroll = true;
 			this.reviewsFLP.Location = new System.Drawing.Point(19, 307);
 			this.reviewsFLP.Name = "reviewsFLP";
 			this.reviewsFLP.Size = new System.Drawing.Size(513, 131);

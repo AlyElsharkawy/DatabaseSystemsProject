@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Xml.Linq;
+using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
 
 namespace DatabaseSystemsProject.DB
 {
@@ -267,5 +268,38 @@ namespace DatabaseSystemsProject.DB
                 }
             }
         }
+
+		public static List<Review> getCourseReviews(long courseID)
+		{
+			String query = "SELECT ID,StudentID,CourseID,Title,CONTENT,Rating FROM CourseReviews WHERE CourseID = @courseID";
+			List<Review> reviews = new List<Review>();
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@courseID", courseID);
+					using (var reader = cmm.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							var course = new Review
+							{
+								ID = reader.GetInt64("ID"),
+								Title = reader.GetString("Title"),
+								StudentID = reader.GetInt64("StudentID"),
+								CONTENT = reader.GetString("CONTENT"),
+								Rating = reader.GetByte("Rating"),
+							};
+
+							reviews.Add(course);
+						}
+					}
+				}
+
+			}
+
+			return reviews;
+		}
 	}
 }
