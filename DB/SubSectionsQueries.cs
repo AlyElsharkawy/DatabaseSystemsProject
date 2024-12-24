@@ -536,5 +536,108 @@ namespace DatabaseSystemsProject.DB
 				}
 			}
 		}
-	}
+
+
+        public static List<SolvedAssignment> assignSolved(long courseId, long studentId)
+        {
+            string query = "SELECT sa.ID, sa.SolvedDate, sa.Grade, m.Title  FROM SolvedAssignment sa JOIN ModuleInformation m " +
+				"ON m.ID = sa.ModuleID " +
+				"WHERE sa.StudentID = @studentId " +
+				"AND " +
+				"sa.CourseID = @courseId";
+            List<SolvedAssignment> sa = new List<SolvedAssignment>();
+            using (var connection = new MySqlConnection(dbSecret.connectionString))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+					command.Parameters.AddWithValue("@studentId", studentId);
+                    command.Parameters.AddWithValue("@courseId", courseId);
+					using (var reader = command.ExecuteReader())
+					{
+						SolvedAssignment sa1 = new SolvedAssignment();
+                        while (reader.Read())
+                        {
+							sa1.ID = reader.GetInt64("ID");
+							sa1.SolvedDate = reader.GetDateTime("SolvedDate");
+							sa1.ModuleTitle = reader.GetString("Title");
+							try
+							{
+								sa1.Grade = reader.GetDecimal("Grade");
+							}
+							catch
+							{
+								sa1.Grade = null;
+							}
+                        }
+						sa.Add(sa1);
+                    }
+                }
+            }
+
+			return sa;
+        }
+
+        public static List<SolvedShortAnswer> sAQSolved(long courseId, long studentId)
+        {
+            string query = "SELECT sa.ID, sa.SolvedDate, sa.Grade, m.Title  FROM SolvedShortAnswerQuestion sa JOIN ModuleInformation m ON m.ID = sa.ModuleID WHERE sa.StudentID = @studentId AND sa.CourseID = @courseId";
+            List<SolvedShortAnswer> sa = new List<SolvedShortAnswer>();
+            using (var connection = new MySqlConnection(dbSecret.connectionString))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@studentId", studentId);
+                    command.Parameters.AddWithValue("@courseId", courseId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+						SolvedShortAnswer sa1 = new SolvedShortAnswer();
+                        while (reader.Read())
+                        {
+                            sa1.ID = reader.GetInt64("ID");
+                            sa1.SolvedDate = reader.GetDateTime("SolvedDate");
+                            sa1.ModuleTitle = reader.GetString("Title");
+                            try
+                            {
+                                sa1.Grade = reader.GetDecimal("Grade");
+                            }
+                            catch
+                            {
+                                sa1.Grade = null;
+                            }
+
+							sa.Add(sa1);
+                        }
+                        
+                    }
+                }
+				return sa;
+            }
+        }
+
+		public static String studentSA(long studentId, long questionId)
+		{
+			String query = "SELECT StudentAnswer FROM SolvedShortAnswerQuestion WHERE StudentID = @studentId AND ID = @questionId ";
+			String ans = "";
+            using (var connection = new MySqlConnection(dbSecret.connectionString))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@studentId", studentId);
+                    command.Parameters.AddWithValue("@questionId", questionId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        SolvedAssignment sa1 = new SolvedAssignment();
+                        while (reader.Read())
+                        {
+							ans = reader.GetString("StudentAnswer");
+                        }
+                    }
+                }
+				return ans.ToString();
+            }
+        }
+    }
 }

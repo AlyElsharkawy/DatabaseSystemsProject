@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseSystemsProject.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,84 +13,161 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 {
 	public partial class StudentsWork : Form
 	{
-		public StudentsWork()
+		long courseID, studentID;
+		public StudentsWork(long courseID, long studentID)
 		{
 			InitializeComponent();
+			this.courseID = courseID;	
+			this.studentID = studentID;	
+
 			loadDummyData();
 		}
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Assignment", Description = "Module 1",Grade = 10},
-				new { Name = "MCQ", Description = "Module 2",Grade= 2 },
-				new { Name = "T/F", Description = "Module 1",Grade= 3 },
-				new { Name = "Short Answer", Description = "Module 5",Grade= 3 },
-				new { Name = "Belal Salem", Description = "Module 8",Grade= 3 },
-			};
+            // SA
+            var sas = SubSectionsQueries.sAQSolved(courseID, studentID);
 
-			foreach (var item in items)
-			{
-				Panel coursePanel = new Panel
-				{
-					Width = 755,
-					Height = 100,
-					Margin = new Padding(10),
-					BorderStyle = BorderStyle.FixedSingle
-				};
+            foreach (var item in sas)
+            {
+                if(item.Grade != null)
+                {
+                    continue;
+                }
+                
+                Panel coursePanel = new Panel
+                {
+                    Width = 755,
+                    Height = 100,
+                    Margin = new Padding(10),
+                    BorderStyle = BorderStyle.FixedSingle
+                };
 
-				Label qType = new Label
-				{
-					Text = item.Name,
-					Font = new Font("Arial", 10, FontStyle.Bold),
-					Location = new Point(10, 10),
-					Width = 300
-				};
+                Label qType = new Label
+                {
+                    Text =  "ShortAnswer" + item.ID.ToString(),
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    Location = new Point(10, 10),
+                    Width = 300
+                };
 
-				Label qModule = new Label
-				{
-					Text = item.Description,
-					Font = new Font("Arial", 10, FontStyle.Bold),
-					Location = new Point(150, 10),
-					Width = 250
-				};
+                Label qModule = new Label
+                {
+                    Text = item.ModuleTitle,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    Location = new Point(150, 10),
+                    Width = 250
+                };
 
-				Label qGrade = new Label
-				{
-					Text = $"Grade: {item.Grade}/10",
-					Location = new Point(300, 10),
-					Width = 300
-				};
+                Label qGrade = new Label
+                {
+                    Text = item.SolvedDate.ToString(),
+                    Location = new Point(300, 10),
+                    Width = 300
+                };
 
-				//Button reviewBTN = new Button
-				//{
-				//	Text = "Write a review",
-				//	
-				//	Width = 80,
-				//	Height = 50,
-				//	Enabled = false
-				//};
+                //Button reviewBTN = new Button
+                //{
+                //	Text = "Write a review",
+                //	
+                //	Width = 80,
+                //	Height = 50,
+                //	Enabled = false
+                //};
 
-				Button gradeBTN = new Button
-				{
-					Text = "Grade Work",
-					Location = new Point(650, 25),
-					Width = 80,
-					Height = 50
-				};
+                Button gradeBTN = new Button
+                {
+                    Text = "Grade Work",
+                    Location = new Point(650, 25),
+                    Width = 80,
+                    Height = 50
+                };
 
 
-				gradeBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+                gradeBTN.Click += (sender, e) => { new StudentsGrade(studentID, item.ID).ShowDialog(); workFLP.Controls.Clear(); loadDummyData(); };
 
-				coursePanel.Controls.Add(qGrade);
-				coursePanel.Controls.Add(qModule);
-				coursePanel.Controls.Add(qType);
-				coursePanel.Controls.Add(gradeBTN);
+                coursePanel.Controls.Add(qGrade);
+                coursePanel.Controls.Add(qModule);
+                coursePanel.Controls.Add(qType);
+                coursePanel.Controls.Add(gradeBTN);
 
-				workFLP.Controls.Add(coursePanel);
+                workFLP.Controls.Add(coursePanel);
 
-			}
-		}
+            }
+
+            // Assignments
+
+            var assignments = SubSectionsQueries.assignSolved(courseID, studentID);
+
+            foreach (var item in assignments)
+            {
+                if(item.Grade != null)
+                {
+                    continue;
+                }
+                Panel coursePanel = new Panel
+                {
+                    Width = 755,
+                    Height = 100,
+                    Margin = new Padding(10),
+                    BorderStyle = BorderStyle.FixedSingle
+                };
+
+                Label qType = new Label
+                {
+                    Text = "Assignment" + item.ID.ToString(),
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    Location = new Point(10, 10),
+                    Width = 300
+                };
+
+                Label qModule = new Label
+                {
+                    Text = item.ModuleTitle,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    Location = new Point(150, 10),
+                    Width = 250
+                };
+
+                Label qGrade = new Label
+                {
+                    Text = item.SolvedDate.ToString(),
+                    Location = new Point(300, 10),
+                    Width = 300
+                };
+
+                //Button reviewBTN = new Button
+                //{
+                //	Text = "Write a review",
+                //	
+                //	Width = 80,
+                //	Height = 50,
+                //	Enabled = false
+                //};
+
+                Button gradeBTN = new Button
+                {
+                    Text = "Grade Work",
+                    Location = new Point(650, 25),
+                    Width = 80,
+                    Height = 50
+                };
+
+
+                gradeBTN.Click += (sender, e) => { new StudentsGradeAssignment(studentID, item.ID).ShowDialog(); workFLP.Controls.Clear(); loadDummyData(); };
+
+                coursePanel.Controls.Add(qGrade);
+                coursePanel.Controls.Add(qModule);
+                coursePanel.Controls.Add(qType);
+                coursePanel.Controls.Add(gradeBTN);
+
+                workFLP.Controls.Add(coursePanel);
+
+            }
+
+
+
+
+        }
 
 	}
 }

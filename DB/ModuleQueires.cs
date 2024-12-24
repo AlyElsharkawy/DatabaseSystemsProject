@@ -113,12 +113,13 @@ namespace DatabaseSystemsProject.DB
 					}
 				}
 
-			return modules;
+				return modules;
+			}
+
 		}
 
-	}
-
-		public static List<Video> getModuleVideos(long moduleID) {
+		public static List<Video> getModuleVideos(long moduleID)
+		{
 			String query = "SELECT * FROM QuestionVideo WHERE ModuleID = @modID";
 			List<Video> videos = new List<Video>();
 			using (var conn = new MySqlConnection(dbSecret.connectionString))
@@ -207,7 +208,7 @@ namespace DatabaseSystemsProject.DB
 								CourseID = reader.GetInt64("CourseID"),
 								Prompt = reader.GetString("Prompt"),
 								MaxGrade = reader.GetByte("MaxGrade"),
-								
+
 							};
 
 							mcqs.Add(mod);
@@ -286,6 +287,7 @@ namespace DatabaseSystemsProject.DB
 				return mcqs;
 			}
 		}
+
 
 
 		public static List<Reading> getModuleReadings(long moduleID)
@@ -431,6 +433,35 @@ namespace DatabaseSystemsProject.DB
         WHERE StudentID = @StudentID 
           AND CourseID = @CourseID 
           AND ID = @ModuleID;";
+		public static byte getQuestionMaxGrade(long questionId)
+		{
+			String query = "SELECT MaxGrade FROM QuestionShortAnswer WHERE ID = @questionId";
+			byte mx = 0;
+			using (var conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				using (var cmm = new MySqlCommand(query, conn))
+				{
+					cmm.Parameters.AddWithValue("@questionId", questionId);
+					using (var reader = cmm.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							mx = reader.GetByte("MaxGrade");
+						}
+					}
+				}
+
+				return mx;
+			}
+
+		}
+
+		public static void insertGrade(long questionId, long studentId, decimal grade)
+		{
+
+			String query = "UPDATE SolvedShortAnswerQuestion SET Grade = @grade WHERE ID = @questionId AND StudentID = @studentId";
+
 
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
@@ -449,4 +480,91 @@ namespace DatabaseSystemsProject.DB
 			}
 		}
 	}
+				try
+				{
+					using (var trans = connection.BeginTransaction())
+					{
+						using (var command = new MySqlCommand(query, connection))
+						{
+
+							command.Parameters.AddWithValue("@grade", grade);
+							command.Parameters.AddWithValue("@questionId", questionId);
+							command.Parameters.AddWithValue("@studentId", studentId);
+
+							command.ExecuteNonQuery();
+
+						}
+
+						trans.Commit();
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+
+
+			}
+		}
+
+        public static byte getQuestionMaxGradeAssignment(long questionId)
+        {
+            String query = "SELECT MaxGrade FROM QuestionAssignment WHERE ID = @questionId";
+            byte mx = 0;
+            using (var conn = new MySqlConnection(dbSecret.connectionString))
+            {
+                conn.Open();
+                using (var cmm = new MySqlCommand(query, conn))
+                {
+                    cmm.Parameters.AddWithValue("@questionId", questionId);
+                    using (var reader = cmm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            mx = reader.GetByte("MaxGrade");
+                        }
+                    }
+                }
+
+                return mx;
+            }
+
+        }
+
+        public static void insertGradeAssignment(long questionId, long studentId, decimal grade)
+        {
+
+            String query = "UPDATE SolvedAssignment SET Grade = @grade WHERE ID = @questionId AND StudentID = @studentId";
+
+
+            using (var connection = new MySqlConnection(dbSecret.connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    using (var trans = connection.BeginTransaction())
+                    {
+                        using (var command = new MySqlCommand(query, connection))
+                        {
+
+                            command.Parameters.AddWithValue("@grade", grade);
+                            command.Parameters.AddWithValue("@questionId", questionId);
+                            command.Parameters.AddWithValue("@studentId", studentId);
+
+                            command.ExecuteNonQuery();
+
+                        }
+
+                        trans.Commit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+
+            }
+        }
+    }
 }

@@ -89,7 +89,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 				};
 
 
-				assignBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.name}"); };
+				assignBTN.Click += (sender, e) => { new StudentsWork(courseID, item.Id).ShowDialog(); };
 
 				coursePanel.Controls.Add(studentPfp);
 				coursePanel.Controls.Add(studentName);
