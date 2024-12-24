@@ -572,5 +572,23 @@ namespace DatabaseSystemsProject.DB
 
             }
         }
+
+		public static int completedModules(long courseId, long studentId)
+		{
+			String query = "SELECT COUNT(*) FROM StudentCompletedModules WHERE CourseID = @courseId AND StudentID = @studentId";
+			int cnt = 0;
+            using (var conn = new MySqlConnection(dbSecret.connectionString))
+            {
+                conn.Open();
+                using (var cmm = new MySqlCommand(query, conn))
+                {
+                    cmm.Parameters.AddWithValue("@courseId", courseId);
+                    cmm.Parameters.AddWithValue("@studentId", studentId);
+					cnt = Convert.ToInt32(cmm.ExecuteScalar());
+                }
+
+                return cnt;
+            }
+        }
     }
 }

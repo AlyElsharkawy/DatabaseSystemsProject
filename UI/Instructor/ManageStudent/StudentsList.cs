@@ -66,7 +66,7 @@ namespace DatabaseSystemsProject.UI.Instructor.ManageStudent
 
 				Label modulesProg = new Label
 				{
-					Text = $"Completed: 0/6 ",
+					Text = $"Completed: {ModuleQueires.completedModules(courseID, item.Id)} ",
 					Font = new Font("Arial", 10, FontStyle.Bold),
 					Location = new Point(450, 25),
 					Width = 200
