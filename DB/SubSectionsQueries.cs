@@ -445,7 +445,7 @@ namespace DatabaseSystemsProject.DB
 
 
 
-		private bool mcqSolved(long studentId, long moduleId, long courseId, long questionId)
+		public static bool isMcqSolved(long studentId, long moduleId, long courseId, long questionId)
 		{
 			string query = "SELECT COUNT(*) FROM SolvedQuestionMultipleChoice WHERE StudentID = @studentId AND ModuleID = @moduleId AND CourseID = @courseId AND ID = @questionId";
 
@@ -461,6 +461,66 @@ namespace DatabaseSystemsProject.DB
 
 					var result = command.ExecuteScalar();
 					return Convert.ToInt32(result) > 0; 
+				}
+			}
+		}
+
+		public static bool isTFSolved(long studentId, long moduleId, long courseId, long questionId)
+		{
+			string query = "SELECT COUNT(*) FROM SolvedQuestionTrueFalse WHERE StudentID = @studentId AND ModuleID = @moduleId AND CourseID = @courseId AND ID = @questionId";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+				using (var command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@studentId", studentId);
+					command.Parameters.AddWithValue("@moduleId", moduleId);
+					command.Parameters.AddWithValue("@courseId", courseId);
+					command.Parameters.AddWithValue("@questionId", questionId);
+
+					var result = command.ExecuteScalar();
+					return Convert.ToInt32(result) > 0;
+				}
+			}
+		}
+
+		public static bool isAssignSolved(long studentId, long moduleId, long courseId, long questionId)
+		{
+			string query = "SELECT COUNT(*) FROM SolvedAssignment WHERE StudentID = @studentId AND ModuleID = @moduleId AND CourseID = @courseId AND ID = @questionId";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+				using (var command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@studentId", studentId);
+					command.Parameters.AddWithValue("@moduleId", moduleId);
+					command.Parameters.AddWithValue("@courseId", courseId);
+					command.Parameters.AddWithValue("@questionId", questionId);
+
+					var result = command.ExecuteScalar();
+					return Convert.ToInt32(result) > 0;
+				}
+			}
+		}
+
+		public static bool isSAQSolved(long studentId, long moduleId, long courseId, long questionId)
+		{
+			string query = "SELECT COUNT(*) FROM SolvedShortAnswerQuestion WHERE StudentID = @studentId AND ModuleID = @moduleId AND CourseID = @courseId AND ID = @questionId";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+				using (var command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@studentId", studentId);
+					command.Parameters.AddWithValue("@moduleId", moduleId);
+					command.Parameters.AddWithValue("@courseId", courseId);
+					command.Parameters.AddWithValue("@questionId", questionId);
+
+					var result = command.ExecuteScalar();
+					return Convert.ToInt32(result) > 0;
 				}
 			}
 		}

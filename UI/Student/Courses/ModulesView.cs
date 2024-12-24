@@ -237,15 +237,23 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			submitButton.Click += (sender, e) =>
 			{
 				
-				foreach (var control in optionsPanel.Controls)
-				{
-					if (control is RadioButton radioButton && radioButton.Checked)
+					foreach (var control in optionsPanel.Controls)
 					{
-						solveMCQ(mcq, (byte)radioButton.Tag);
-						break;
+						if (control is RadioButton radioButton && radioButton.Checked)
+						{
+							solveMCQ(mcq, (byte)radioButton.Tag);
+							submitButton.Enabled = false;
+
+							break;
+						}
 					}
-				}
-			};
+				
+				};
+
+			if (SubSectionsQueries.isMcqSolved(studentID, mcq.ModuleID, mcq.CourseID, mcq.ID))
+			{
+				submitButton.Enabled = false;
+			}
 			mcqPanel.Controls.Add(submitButton);
 
 		
@@ -270,16 +278,24 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			uploadButton.Location = new Point(150, 150);
 			uploadButton.Click += (sender, e) =>
 			{
-				using (OpenFileDialog openFileDialog = new OpenFileDialog())
-				{
-					openFileDialog.Filter = "PDF Files|*.pdf|All Files|*.*";
-					if (openFileDialog.ShowDialog() == DialogResult.OK)
+				
+					using (OpenFileDialog openFileDialog = new OpenFileDialog())
 					{
-						solveAssignment(assignment, openFileDialog.FileName);
+						openFileDialog.Filter = "PDF Files|*.pdf|All Files|*.*";
+						if (openFileDialog.ShowDialog() == DialogResult.OK)
+						{
+							solveAssignment(assignment, openFileDialog.FileName);
+							uploadButton.Enabled = false;
+						}
 					}
-				}
+			
 			};
-			assignmentPanel.Controls.Add(uploadButton);
+
+			if (SubSectionsQueries.isAssignSolved(studentID, assignment.ModuleID, assignment.CourseID, assignment.ID))
+			{
+				uploadButton.Enabled = false;
+			}
+				assignmentPanel.Controls.Add(uploadButton);
 
 			moduleFLP.Controls.Add(assignmentPanel);
 		}
@@ -331,7 +347,17 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			submitButton.Text = "Submit Answer";
 			submitButton.Size = new Size(150, 30);
 			submitButton.Location = new Point(10, 350);
-			submitButton.Click += (sender, e) => solveSAQ(saq,answerTextBox.Text);
+			submitButton.Click += (sender, e) => {
+
+				solveSAQ(saq, answerTextBox.Text);
+				submitButton.Enabled = false;
+				
+			};
+			if (SubSectionsQueries.isSAQSolved(studentID, saq.ModuleID, saq.CourseID, saq.ID))
+			{
+
+				submitButton.Enabled = false;
+			}
 			saqPanel.Controls.Add(submitButton);
 
 			moduleFLP.Controls.Add(saqPanel);
@@ -379,7 +405,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					MessageBox.Show("Please select an answer.");
 				}
+
+				submitButton.Enabled = false;
 			};
+			if (SubSectionsQueries.isTFSolved(studentID, tf.ModuleID, tf.CourseID, tf.ID))
+			{
+				submitButton.Enabled = false;
+			}
 			tfqPanel.Controls.Add(submitButton);
 
 			moduleFLP.Controls.Add(tfqPanel);
