@@ -107,6 +107,7 @@
     <Compile Include="DB\LoginQueries.cs" />
     <Compile Include="DB\ModuleQueires.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
+    <Compile Include="DB\SolvedShortAnswer.cs" />
     <Compile Include="DB\StudentQueries.cs" />
     <Compile Include="DB\SubSectionsQueries.cs" />
     <Compile Include="Models\Assignment.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Reading.cs" />
     <Compile Include="Models\SAQ.cs" />
+    <Compile Include="Models\SolvedAssignment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCertificate.cs" />
     <Compile Include="Models\TFQ.cs" />
@@ -248,6 +250,18 @@
     </Compile>
     <Compile Include="UI\Instructor\InstructorScreen.Designer.cs">
       <DependentUpon>InstructorScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsGrade.Designer.cs">
+      <DependentUpon>StudentsGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsGradeAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Instructor\ManageStudent\StudentsGradeAssignment.Designer.cs">
+      <DependentUpon>StudentsGradeAssignment.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Instructor\ManageStudent\StudentsList.cs">
       <SubType>Form</SubType>
@@ -388,6 +402,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\InstructorScreen.resx">
       <DependentUpon>InstructorScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsGrade.resx">
+      <DependentUpon>StudentsGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsGradeAssignment.resx">
+      <DependentUpon>StudentsGradeAssignment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>
