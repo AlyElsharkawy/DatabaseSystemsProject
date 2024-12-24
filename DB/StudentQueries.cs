@@ -3,6 +3,7 @@ using DatabaseSystemsProject.Utility;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -206,5 +207,31 @@ namespace DatabaseSystemsProject.DB
 
             return students;
         }
-    }
+
+		public static int getInstructorStudents(long instructorID)
+		{
+			String query = "SELECT DISTINCT COUNT(*) " +
+				   "FROM StudentEnrollment se " +
+				   "JOIN CourseInformation ci ON se.CourseID = ci.ID " +
+				   "JOIN CourseInstructors cin ON ci.ID = cin.CourseID " +
+				   "JOIN InstructorInformation ii ON cin.InstructorID = ii.ID " +
+				   "JOIN StudentInformation si ON se.StudentID = si.ID " + 
+				   "WHERE ii.ID = @InstructorID";
+
+			using (MySqlConnection conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+
+				// Add the parameter to the query
+				cmd.Parameters.AddWithValue("@InstructorID", instructorID);
+
+				// Execute the query and return the result
+				var result = cmd.ExecuteScalar();
+				return result != null ? Convert.ToInt32(result) : 0;  // Return the count or 0 if no records found
+			}
+
+
+		}
+	}
 }

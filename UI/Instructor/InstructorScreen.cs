@@ -24,7 +24,7 @@ namespace DatabaseSystemsProject.UI.Instructor
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
 			this.instructorID = instructorID;
 			loadDummyData();
-		
+			loadStudentCount(instructorID);
 
 		}
 
@@ -96,6 +96,13 @@ namespace DatabaseSystemsProject.UI.Instructor
 			new CreateCourse(instructorID).ShowDialog();
 			CoursesFLP.Controls.Clear();
 			loadDummyData();
+		}
+
+
+		private void  loadStudentCount(long instructorID)
+		{
+			int result = StudentQueries.getInstructorStudents(instructorID);
+			totalStudentLBL.Text = $"Total Student: {result}";
 		}
 	}
 }
