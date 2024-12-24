@@ -33,6 +33,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			selectedCourse = recievedCourse;
 			studentID = rStudentID;	
 			loadModules();
+
 		}
 
 
@@ -466,22 +467,29 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 		private void solveMCQ(mcq mcq,byte chosenAnswer)
 		{
 			SubSectionsQueries.createSolvedMCQ(mcq, chosenAnswer,studentID);
+			isModuleCompleted(mcq.ModuleID,mcq.CourseID);
 		}
 
 		private void solveAssignment(Assignment assignment, String chosenAnswer)
 		{
 			SubSectionsQueries.createSolvedAssignment(assignment, chosenAnswer, studentID);
+			isModuleCompleted(assignment.ModuleID, assignment.CourseID);
+
 		}
 
 		private void solveSAQ(SAQ mcq, string chosenAnswer)
 		{
 			SubSectionsQueries.createSolvedSAQ(mcq, chosenAnswer, studentID);
+			isModuleCompleted(mcq.ModuleID, mcq.CourseID);
+
 		}
 
 
 		private void solveTFQ(TFQ mcq, byte chosenAnswer)
 		{
 			SubSectionsQueries.createSolvedTFQ(mcq, chosenAnswer, studentID);
+			isModuleCompleted(mcq.ModuleID, mcq.CourseID);
+
 		}
 
 		private void seeVideo(Video video)
@@ -496,7 +504,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		
 
-		private bool isModuleCompleted(long moduleID,long courseID)
+		private void isModuleCompleted(long moduleID,long courseID)
 		{
 			if (ModulesMCQs.TryGetValue(moduleID, out List<long> mcqIds))
 			{
@@ -504,7 +512,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					if(!SubSectionsQueries.isMcqSolved(studentID, moduleID, selectedCourse.Id, mcqId))
 					{
-						return false;
+						return;
 					}
 				}
 			}
@@ -515,7 +523,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					if (!SubSectionsQueries.isAssignSolved(studentID, moduleID, selectedCourse.Id, mcqId))
 					{
-						return false;
+						return;
 					}
 				}
 			}
@@ -526,7 +534,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					if (!SubSectionsQueries.isSAQSolved(studentID, moduleID, selectedCourse.Id, mcqId))
 					{
-						return false;
+						return;
 					}
 				}
 			}
@@ -537,7 +545,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				{
 					if (!SubSectionsQueries.isTFSolved(studentID, moduleID, selectedCourse.Id, mcqId))
 					{
-						return false;
+						return;
 					}
 				}
 			}
@@ -545,7 +553,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 			
 
-			return true;
+			//query to add to database
 
 
 		}
