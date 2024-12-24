@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Xml.Linq;
 using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
 using Org.BouncyCastle.Ocsp;
+using System.Data.SqlClient;
 
 namespace DatabaseSystemsProject.DB
 {
@@ -405,5 +406,24 @@ namespace DatabaseSystemsProject.DB
 				}
 			}
 		}
-	}
+
+		public static long getCertificateID(long courseID)
+		{
+			string query = "SELECT ID FROM CourseCertificate WHERE CourseID = @courseID";
+
+			using (MySqlConnection conn = new MySqlConnection(dbSecret.connectionString))
+			{
+				conn.Open();
+
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@courseID", courseID);
+
+
+
+
+				var result = cmd.ExecuteScalar();
+				return result != null ? Convert.ToInt64(result) : -1; 
+			}
+		}
+	}	
 }

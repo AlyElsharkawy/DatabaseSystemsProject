@@ -566,7 +566,9 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 				}
 			}
 
-			CourseQueries.InsertStudentEarnedCertificate(studentID,courseID,1,DateTime.Now.AddYears(5),"path/to/certificate");
+			long certificateID = CourseQueries.getCertificateID(courseID);
+
+			CourseQueries.InsertStudentEarnedCertificate(studentID,courseID,certificateID,DateTime.Now.AddYears(5),"path/to/certificate");
 
 
 
