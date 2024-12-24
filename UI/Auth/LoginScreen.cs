@@ -32,29 +32,35 @@ namespace DatabaseSystemsProject
 		private void loginBTN_Click(object sender, EventArgs e)
 		{
 			int type = LoginQueries.type(emailTB.Text);
-
-			long id = LoginQueries.authenticate(type, emailTB.Text, passTB.Text);
-			if (id == -1)
+			try
 			{
-				MessageBox.Show("Login failed.");
-				return;
+				long id = LoginQueries.authenticate(type, emailTB.Text, passTB.Text);
+				if (id == -1)
+				{
+					MessageBox.Show("Login failed.");
+					return;
+				}
+
+				switch (type)
+				{
+					case 1:
+						new HomeScreen(id).ShowDialog();
+						break;
+					case 2:
+						new Home(id).ShowDialog();
+						break;
+					case 3:
+						new InstructorScreen(id).ShowDialog();
+						break;
+					default:
+						MessageBox.Show("Login failed.");
+						break;
+				}
 			}
-
-			switch (type)
+			catch
 			{
-				case 1:
-					new HomeScreen(id).ShowDialog();
-					break;
-				case 2:
-					new Home(id).ShowDialog();
-					break;
-				case 3:
-					new InstructorScreen(id).ShowDialog();
-					break;
-				default:
-                    MessageBox.Show("Login failed.");
-					break;
-            }
+				MessageBox.Show("check credintails");
+			}
 		}
 	}
 }
