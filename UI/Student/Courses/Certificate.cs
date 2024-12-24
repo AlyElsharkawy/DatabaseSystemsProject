@@ -49,7 +49,9 @@ namespace DatabaseSystemsProject.UI.Student.Courses
                                     Id = reader.GetInt64("CertificateID"),
                                     IssueDate = reader.GetDateTime("IssueDate"),
                                     ExpiryDate = reader.GetDateTime("ExpiryDate"),
-                                    Grade = reader.GetInt64("Grade")
+                                    Grade = reader.GetInt64("Grade"),
+                                    
+                                    
                                 };
 
 
@@ -92,13 +94,13 @@ namespace DatabaseSystemsProject.UI.Student.Courses
                 }
 
 
-                String query3 = "SELECT Name, CourseID FROM CourseCertificate WHERE CourseID = @cid";
+                String query3 = "SELECT Name, CourseID FROM CourseCertificate WHERE ID = @cid";
 
                 try
                 {
                     using (var cmm = new MySqlCommand(query3, conn))
                     {
-                        cmm.Parameters.AddWithValue("@cid", courseID);
+                        cmm.Parameters.AddWithValue("@cid", studentCertificate.Id);
                         using (var reader = cmm.ExecuteReader())
                         {
                             while (reader.Read())

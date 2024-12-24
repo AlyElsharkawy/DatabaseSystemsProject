@@ -72,10 +72,11 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 					
 				};
 
-				if (CourseQueries.hastWrittenReview(item.Id, studentID))
+				if (CourseQueries.hastWrittenReview(item.Id, studentID) || !CourseQueries.ifCertiExisit(studentID, item.Id))
 				{
 					reviewBTN.Enabled = false;
 				}
+
 
 				Button certificateBTN = new Button
 				{
@@ -83,8 +84,14 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 					Location = new Point(550, 25),
 					Width = 80,
 					Height = 50,
-					
+					Enabled = false
 				};
+
+
+				if (CourseQueries.ifCertiExisit(studentID, item.Id))
+				{
+					certificateBTN.Enabled = true;
+				}
 
 				Button enterBTN = new Button
 				{
@@ -95,8 +102,8 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 				};
 
 
-				enterBTN.Click += (sender, e) => { new ModulesView(item, studentID).ShowDialog(); };
-				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); };
+				enterBTN.Click += (sender, e) => { new ModulesView(item, studentID).ShowDialog(); coursePanel.Controls.Clear(); loadDummyData(); };
+				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); coursePanel.Controls.Clear(); loadDummyData(); };
 				certificateBTN.Click += (sender, e) => { new Certificate(studentID, item.Id).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);

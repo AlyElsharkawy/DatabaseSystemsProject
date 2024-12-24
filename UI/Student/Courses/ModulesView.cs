@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +17,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 	{
 		Course selectedCourse;
 		long studentID;
+		List<Module> modules;
 
 		Dictionary<long, List<long>> ModulesMCQs = new Dictionary<long, List<long>>();
 		Dictionary<long, List<long>> ModulesAssigns = new Dictionary<long, List<long>>();
@@ -46,7 +46,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		private void loadModules()
 		{
-			var modules = ModuleQueires.getCourseModules(selectedCourse.Id);
+			modules = ModuleQueires.getCourseModules(selectedCourse.Id);
 			foreach (var module in modules) {
 				var enteredNode = modulesTV.Nodes.Add(module.moduleTitle);
 				
@@ -557,8 +557,21 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 			ModuleQueires.completeModule(moduleID, studentID, courseID);
 
 
+			//function to check if all modules where compelted
+			foreach(var module in modules)
+			{
+				if(!ModuleQueires.isModuleCompleted(module.moduleID, studentID, courseID))
+				{
+					return;
+				}
+			}
+
+			CourseQueries.InsertStudentEarnedCertificate(studentID,courseID,1,DateTime.Now.AddYears(5),"path/to/certificate");
+
 
 
 		}
+
+
 	}
 }

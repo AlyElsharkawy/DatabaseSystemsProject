@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Xml.Linq;
 using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
+using Org.BouncyCastle.Ocsp;
 
 namespace DatabaseSystemsProject.DB
 {
@@ -318,6 +319,64 @@ namespace DatabaseSystemsProject.DB
 
 			}
 
+		}
+
+		public static void InsertStudentEarnedCertificate(long studentID, long courseID, long certificateID, DateTime expiryDate, string filePath, decimal grade = 10)
+		{
+			string query = @"
+        INSERT INTO StudentEarnedCertificates (StudentID, CourseID, CertificateID, Grade, ExpiryDate, FilePath) 
+        VALUES (@StudentID, @CourseID, @CertificateID, @Grade, @ExpiryDate, @FilePath);";
+
+			using (var connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+
+				using (var command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@StudentID", studentID);
+					command.Parameters.AddWithValue("@CourseID", courseID);
+					command.Parameters.AddWithValue("@CertificateID", certificateID);
+					command.Parameters.AddWithValue("@Grade", grade);
+					command.Parameters.AddWithValue("@ExpiryDate", expiryDate);
+					command.Parameters.AddWithValue("@FilePath", filePath);
+
+					command.ExecuteNonQuery(); // Execute the insert query
+				}
+			}
+		}
+
+
+		public static bool ifCertiExisit(long studentID, long CourseID)
+		{
+			bool certificateExists = false;
+			string query = @"
+            SELECT 
+                CASE 
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM StudentEarnedCertificates
+                        WHERE StudentID = @StudentID
+                        AND CourseID = @CourseID
+                    ) THEN TRUE
+                    ELSE FALSE
+                END AS CertificateExists;
+        ";
+
+			using (MySqlConnection connection = new MySqlConnection(dbSecret.connectionString))
+			{
+				connection.Open();
+
+				using (MySqlCommand command = new MySqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@StudentID", studentID);
+					command.Parameters.AddWithValue("@CourseID", CourseID);
+
+					var result = command.ExecuteScalar();
+					certificateExists = result != null && Convert.ToBoolean(result);
+				}
+			}
+
+			return certificateExists;
 		}
 	}
 }
