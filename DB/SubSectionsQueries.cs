@@ -272,14 +272,19 @@ namespace DatabaseSystemsProject.DB
 
 		public static void createSolvedMCQ(mcq mcq, byte chosenAnswer,long studentID)
 		{
+			decimal grade = 0;
+			if(chosenAnswer == mcq.CorrectAnswer)
+			{
+				grade = mcq.MaxGrade;
+			}
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
 				try
 				{
 					connection.Open();
 
-					string query = "INSERT INTO SolvedQuestionMultipleChoice (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
+					string query = "INSERT INTO SolvedQuestionMultipleChoice (ID, ModuleID, CourseID, StudentID, StudentAnswer,Grade) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer,@Grade)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -288,6 +293,7 @@ namespace DatabaseSystemsProject.DB
 						command.Parameters.AddWithValue("@CourseID", mcq.CourseID);
 						command.Parameters.AddWithValue("@StudentID", studentID);
 						command.Parameters.AddWithValue("@StudentAnswer", chosenAnswer);
+						command.Parameters.AddWithValue("@Grade", grade);
 
 						command.ExecuteNonQuery();
 					}
@@ -359,14 +365,19 @@ namespace DatabaseSystemsProject.DB
 
 		public static void createSolvedTFQ(TFQ tfq, byte choosenAnswer, long studentID)
 		{
+			decimal grade = 0;
+			if (choosenAnswer == tfq.CorrectAnswer)
+			{
+				grade = tfq.MaxGrade;
+			}
 			using (var connection = new MySqlConnection(dbSecret.connectionString))
 			{
 				try
 				{
 					connection.Open();
 
-					string query = "INSERT INTO SolvedQuestionTrueFalse (ID, ModuleID, CourseID, StudentID, StudentAnswer) " +
-								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer)";
+					string query = "INSERT INTO SolvedQuestionTrueFalse (ID, ModuleID, CourseID, StudentID, StudentAnswer,Grade) " +
+								   "VALUES (@ID, @ModuleID, @CourseID, @StudentID, @StudentAnswer,@Grade)";
 
 					using (var command = new MySqlCommand(query, connection))
 					{
@@ -375,6 +386,7 @@ namespace DatabaseSystemsProject.DB
 						command.Parameters.AddWithValue("@CourseID", tfq.CourseID);
 						command.Parameters.AddWithValue("@StudentID", studentID);
 						command.Parameters.AddWithValue("@StudentAnswer", choosenAnswer);
+						command.Parameters.AddWithValue("@Grade", grade);
 
 						command.ExecuteNonQuery();
 					}

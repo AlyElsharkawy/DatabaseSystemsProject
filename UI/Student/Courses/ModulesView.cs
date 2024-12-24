@@ -466,6 +466,7 @@ namespace DatabaseSystemsProject.UI.Student.Courses
 
 		private void solveMCQ(mcq mcq,byte chosenAnswer)
 		{
+
 			SubSectionsQueries.createSolvedMCQ(mcq, chosenAnswer,studentID);
 			isModuleCompleted(mcq.ModuleID,mcq.CourseID);
 		}
