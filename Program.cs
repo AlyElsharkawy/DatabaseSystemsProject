@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DatabaseSystemsProject.UI.Student.Courses.MyCourses;
 
 namespace DatabaseSystemsProject
 {
@@ -26,7 +27,7 @@ namespace DatabaseSystemsProject
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new HomeScreen());
+			Application.Run(new LoginScreen());
 		}
 	}
 }

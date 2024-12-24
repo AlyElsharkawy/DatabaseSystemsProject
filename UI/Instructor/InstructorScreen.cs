@@ -1,4 +1,6 @@
-﻿using DatabaseSystemsProject.UI.Instructor.Course.Creation;
+﻿using DatabaseSystemsProject.DB;
+using DatabaseSystemsProject.UI.Instructor.Course.Creation;
+using DatabaseSystemsProject.UI.Instructor.ManageStudent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,27 +14,23 @@ using System.Windows.Forms;
 
 namespace DatabaseSystemsProject.UI.Instructor
 {
-	public partial class HomeScreen : Form
+	public partial class InstructorScreen : Form
 	{
 		String placeHolderPath;
-		public HomeScreen()
+		long instructorID;
+		public InstructorScreen(long instructorID)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
+			this.instructorID = instructorID;
 			loadDummyData();
+		
 
 		}
 
 		private void loadDummyData()
 		{
-			var items = new[]
-			{
-				new { Name = "Item 1", Description = "Description 1", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 3", Description = "Description 3", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-				new { Name = "Item 2", Description = "Description 2", Thumbnail = placeHolderPath },
-			};
+			var items = CourseQueries.getInstructorCourses(instructorID);
 
 			foreach (var item in items)
 			{
@@ -45,7 +43,7 @@ namespace DatabaseSystemsProject.UI.Instructor
 
 				PictureBox courseThumb = new PictureBox
 				{
-					Image = Image.FromFile(item.Thumbnail), // Set thumbnail image
+					Image = Image.FromFile(placeHolderPath), // Set thumbnail image
 					SizeMode = PictureBoxSizeMode.StretchImage,
 					Width = 80,
 					Height = 80,
@@ -76,7 +74,7 @@ namespace DatabaseSystemsProject.UI.Instructor
 				};
 
 
-				courseBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
+				courseBTN.Click += (sender, e) => { new StudentsList(item.Id).ShowDialog(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);
@@ -90,12 +88,14 @@ namespace DatabaseSystemsProject.UI.Instructor
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			
+			Close();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			new CreateCourse().ShowDialog();
+			new CreateCourse(instructorID).ShowDialog();
+			CoursesFLP.Controls.Clear();
+			loadDummyData();
 		}
 	}
 }

@@ -16,16 +16,18 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 	{
 
 		String placeHolderPath;
-		public MyCourses()
+		long studentID;
+		public MyCourses(long studentID)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
+			this.studentID = studentID;
 			loadDummyData();
 		}
 
 		private void loadDummyData()
 		{
-			var items = CourseQueries.getStudentCourses(23);
+			var items = CourseQueries.getStudentCourses(studentID);
 
 			foreach (var item in items)
 			{
@@ -89,8 +91,8 @@ namespace DatabaseSystemsProject.UI.Student.Courses.MyCourses
 
 
 				enterBTN.Click += (sender, e) => { MessageBox.Show($"You selected {item.Name}"); };
-				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, 23).ShowDialog(); };
-				certificateBTN.Click += (sender, e) => { new Certificate(23, item.Id).Show(); };
+				reviewBTN.Click += (sender, e) => { new ReviewWrite(item.Id, studentID).ShowDialog(); };
+				certificateBTN.Click += (sender, e) => { new Certificate(studentID, item.Id).Show(); };
 
 				coursePanel.Controls.Add(courseThumb);
 				coursePanel.Controls.Add(courseName);

@@ -17,7 +17,7 @@ namespace DatabaseSystemsProject.DB
 
         static MySqlConnection connection;
 
-        public static void registerOrganisation(String name, String description, String path)
+        public static void registerOrganisation(String name, String description, String path, long adminID)
         {
             using (connection = new MySqlConnection(dbSecret.connectionString))
             {
@@ -33,7 +33,7 @@ namespace DatabaseSystemsProject.DB
                             organistionInfoCommand.Parameters.AddWithValue("@Name", name);
                             organistionInfoCommand.Parameters.AddWithValue("@Description", description);
                             organistionInfoCommand.Parameters.AddWithValue("@ProfilePicturePath", path);
-                            organistionInfoCommand.Parameters.AddWithValue("@AdminID", 1);
+                            organistionInfoCommand.Parameters.AddWithValue("@AdminID", adminID);
                             organistionInfoCommand.ExecuteNonQuery();
 
                         }

@@ -17,17 +17,19 @@ namespace DatabaseSystemsProject.UI.Student
 	public partial class HomeScreen : Form
 	{
 		String placeHolderPath;
-		public HomeScreen()
+		long studentID;
+		public HomeScreen(long studentID)
 		{
 			InitializeComponent();
 			placeHolderPath = Path.Combine(Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName, "assets", "placeholder.png");
+			this.studentID = studentID;
 			loadCourses();
 
 		}
 
 		private void loadCourses()
 		{
-			var items = CourseQueries.getUnenrolledStudentCourses();
+			var items = CourseQueries.getUnenrolledStudentCourses(studentID);
 
 			foreach (var item in items)
 			{
@@ -89,7 +91,7 @@ namespace DatabaseSystemsProject.UI.Student
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			new MyCourses().Show();
+			new MyCourses(studentID).Show();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

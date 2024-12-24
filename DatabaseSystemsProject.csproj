@@ -104,6 +104,7 @@
     <Compile Include="DB\dbSecret.cs" />
     <Compile Include="DB\InstructorQueries.cs" />
     <Compile Include="DB\InvoiceQueries.cs" />
+    <Compile Include="DB\LoginQueries.cs" />
     <Compile Include="DB\ModuleQueires.cs" />
     <Compile Include="DB\OrganisationQueries.cs" />
     <Compile Include="DB\StudentQueries.cs" />
@@ -235,11 +236,11 @@
     <Compile Include="UI\Instructor\Course\Creation\Subsections\AddVideo.Designer.cs">
       <DependentUpon>AddVideo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Instructor\HomeScreen.cs">
+    <Compile Include="UI\Instructor\InstructorScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Instructor\HomeScreen.Designer.cs">
-      <DependentUpon>HomeScreen.cs</DependentUpon>
+    <Compile Include="UI\Instructor\InstructorScreen.Designer.cs">
+      <DependentUpon>InstructorScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Instructor\ManageStudent\StudentsList.cs">
       <SubType>Form</SubType>
@@ -378,8 +379,8 @@
     <EmbeddedResource Include="UI\Instructor\Course\Creation\Subsections\AddVideo.resx">
       <DependentUpon>AddVideo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Instructor\HomeScreen.resx">
-      <DependentUpon>HomeScreen.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Instructor\InstructorScreen.resx">
+      <DependentUpon>InstructorScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Instructor\ManageStudent\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>
